@@ -1,5 +1,16 @@
+/* Объявления глобальных переменных */
+const door_models = {
+    "Модель №1": { "по ширине": 0, "по высоте": 0 }, "Модель №2": { "по ширине": 1, "по высоте": 0 }, "Модель №3": { "по ширине": 2, "по высоте": 0 },
+    "Модель №4": { "по ширине": 3, "по высоте": 0 }, "Модель №5": { "по ширине": 4, "по высоте": 0 }, "Модель №6 (Prav)": { "по ширине": 0, "по высоте": 1 },
+    "Модель №6 (Lev)": { "по ширине": 0, "по высоте": 1 }, "Модель №7": { "по ширине": 2, "по высоте": 0 }, "Модель №8": { "по ширине": 4, "по высоте": 0 },
+    "Модель №9": { "по ширине": 3, "по высоте": 0 }, "Модель №10 (Prav)": { "по ширине": 2, "по высоте": 1 }, "Модель №10 (Lev)": { "по ширине": 2, "по высоте": 1 },
+    "Модель №11": { "по ширине": 2, "по высоте": 0 }, "Модель №12": { "по ширине": 2, "по высоте": 0 }, "Модель №13": { "по ширине": 4, "по высоте": 0 },
+    "Модель №14": { "по ширине": 4, "по высоте": 1 }, "Модель №15 (Prav)": { "по ширине": 0, "по высоте": 2 }, "Модель №15 (Lev)": { "по ширине": 0, "по высоте": 2 }
+};
+const door_model_tariff = 1100;
 
 
+/* Код */
 $(document).ready(function () {
     let calcPrices = {
         napol: [
@@ -52,7 +63,7 @@ $(document).ready(function () {
 
     function calc() {
         let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
-        let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 5 : 0);
+        let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
 
         let priceTableDoor = 0;
@@ -78,7 +89,9 @@ $(document).ready(function () {
             })
         }
 
-        calcItog.totalPrice = calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice;
+        calcItog.totalPrice = (calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
+            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff) +
+            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff)) * 1.10;
         renderResult();
     }
 
