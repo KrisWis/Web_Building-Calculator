@@ -90,8 +90,8 @@ $(document).ready(function () {
         }
 
         calcItog.totalPrice = (calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
-            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff) +
-            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff)) * 1.10;
+            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / 1000)) +
+            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10;
         renderResult();
     }
 
