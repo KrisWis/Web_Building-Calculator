@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="calc-container">
+        <div class="calc-inner">
+            <div class="calc-loader">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                    <g transform="translate(80,50)">
+                        <g transform="rotate(0)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="1">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.875s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.875s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(71.21320343559643,71.21320343559643)">
+                        <g transform="rotate(45)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.875">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.75s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.75s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(50,80)">
+                        <g transform="rotate(90)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.75">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.625s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.625s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(28.786796564403577,71.21320343559643)">
+                        <g transform="rotate(135)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.625">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.5s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.5s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(20,50.00000000000001)">
+                        <g transform="rotate(180)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.5">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.375s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.375s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(28.78679656440357,28.786796564403577)">
+                        <g transform="rotate(225)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.375">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.25s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.25s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(49.99999999999999,20)">
+                        <g transform="rotate(270)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.25">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.125s"
+                                    values="1.5 1.5;1 1" keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="-0.125s" />
+                            </circle>
+                        </g>
+                    </g>
+                    <g transform="translate(71.21320343559643,28.78679656440357)">
+                        <g transform="rotate(315)">
+                            <circle cx="0" cy="0" r="6" fill="#ff727d" fill-opacity="0.125">
+                                <animateTransform attributeName="transform" type="scale" begin="0s" values="1.5 1.5;1 1"
+                                    keyTimes="0;1" dur="1s" repeatCount="indefinite" />
+                                <animate attributeName="fill-opacity" keyTimes="0;1" dur="1s" repeatCount="indefinite"
+                                    values="1;0" begin="0s" />
+                            </circle>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="calc-inner-clms-wrapper">
+                <div class="calc-inner-clm calc-flex-column calc-gap-20">
+                    <div class="calc-clm-text">Основные параметры</div>
+                    <div class="calc-inner-clm-row">
+                        <div class="calc-inner-row-item">
+                            <label for="calc-door-width-inp" class="calc-label-input">Ширина, мм</label>
+                            <input type="text" name="calc-door-width" id="calc-door-width-inp" class="calc-input calc-input-text" value="675">
+                        </div>
+                        <div class="calc-inner-row-item">
+                            <label for="calc-door-height-inp" class="calc-label-input">Высота, мм</label>
+                            <input type="text" name="calc-door-height" id="calc-door-height-inp" class="calc-input calc-input-text" value="2000">
+                        </div>
+                    </div>
+                    <div class="calc-inner-clm-row">
+                        <div class="calc-inner-row-item">
+                            <label for="calc-door-color-inp" class="calc-label-input">Цвет</label>
+                            <div class="calc-select-wrapper">
+                                <select name="calc-door-color" id="calc-door-color-inp" class="calc-select">
+                                    <option value="0">Цвет</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="calc-inner-row-item">
+                            <label for="calc-door-amount-inp" class="calc-label-input">Количество дверей</label>
+                            <div class="calc-select-wrapper">
+                                <select name="calc-door-amount" id="calc-door-amount-inp" class="calc-select">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calc-inner-clm-row">
+                        <div class="calc-inner-row-item">
+                            <label for="calc-model-door-inp" class="calc-label-input">Модель двери</label>
+                            <div class="calc-select-wrapper">
+                                <select name="calc-model-door" id="calc-model-door-inp" class="calc-select">
+                                    <option value="1">Модель №1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calc-hr-line"></div>
+                    <div class="calc-clm-text">Наполнение двери</div>
+                    <div class="calc-inner-clm-row calc-door-nap-row">
+
+                    </div>
+                    <div class="calc-hr-line"></div>
+                    <div class="calc-clm-text">Дополнительные опции</div>
+                    <div class="calc-inner-clm-row calc-door-add-opt-row">
+
+                    </div>
+                </div>
+                <div class="calc-inner-clm calc-flex calc-flex-column">
+                    <div class="calc-clm-text">Результат</div>
+                    <div class="calc-clm-stickcontainer">
+                        <div class="calc-stick-item-otp">
+                            <div class="calc-stick-item-otp-itog-text">
+                                <div class="calc-text-otp">
+                                    Стоимость перегородки по вашим параметрам (высота - <span id="calc-otp-height">2000</span> мм, ширина - <span id="calc-otp-width">2600</span> мм, <span id="calc-otp-door-model">модель №3</span>, количество дверей -
+                                    <span id="calc-otp-door-amount">3</span>):
+                                </div>
+                                <div class="calc-text-otp">
+                                    📌 Раздвижная система Алютех опорная
+                                </div>
+                                <div class="calc-text-otp">
+                                    цвет профиля <span id="calc-otp-door-color">темно-коричневый</span>, <span id="calc-otp-door-napol">стекло матовое</span> - <span id="calc-otp-door-price">52 443</span> ₽
+                                </div>
+                                <div class="calc-text-otp">
+                                    🛠 Монтаж - <span><input type="text" name="calc-montage" id="calc-montage-inp" class="calc-otp-input" value="0"></span> ₽
+                                </div>
+                                <div class="calc-text-otp">
+                                    🚛 Доставка - <span><input type="text" name="calc-delivery" id="calc-delivery-inp" class="calc-otp-input" value="0"></span> ₽
+                                </div>
+                                <div class="calc-text-otp">
+                                    💪 Разгрузка - <span><input type="text" name="calc-razgruz" id="calc-razgruz-inp" class="calc-otp-input" value="0"></span> ₽
+                                </div>
+                                <div class="calc-text-otp">
+                                    🔑 Итого под ключ - <span id="calc-otp-itog">63 843</span> ₽
+                                </div>
+                            </div>
+                            <textarea cols="30" rows="10" style="width: 100%;" id="calc-copy-textarea"></textarea>
+                            <div class="calc-copy-btn">Скопировать результат</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/sticky-kit@1.1.3/dist/sticky-kit.min.js"></script>
+    <script async src="scripts/index.js"></script>
+</body>
+</html>
