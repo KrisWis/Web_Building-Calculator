@@ -8,6 +8,8 @@ const door_models = {
     "Модель №14": { "по ширине": 4, "по высоте": 1 }, "Модель №15 (Prav)": { "по ширине": 0, "по высоте": 2 }, "Модель №15 (Lev)": { "по ширине": 0, "по высоте": 2 }
 };
 const door_model_tariff = 1100;
+// Текста текущих активных Услуг.
+let current_services_text = []
 
 
 /* Код */
@@ -96,6 +98,11 @@ $(document).ready(function () {
     }
 
     function renderResult() {
+        $('#itog_results').html(`
+        Услуги: <br/>
+        ${current_services_text.join('<br/>')}
+        `);
+        
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
         $('#calc-otp-width').html(calcUserSelect.openingParams.width);
 
@@ -368,4 +375,24 @@ $(document).ready(function () {
             console.log('Oops, unable to copy');
         }
     });
+
+    // Проверка всех инпутов услуг, и добавления текста checked в массив. Нужно только для конечного текста
+    function service_input_check_text(){
+        $('.calc-door-services-row').each(function() {
+            $(this).find('input').each(function() {
+              if ($(this).prop('checked')) {
+                var label = $(this).next('label')
+                var text = label.find('.calc-radio-label-text').text();
+                current_services_text.push(text);
+                console.log(current_services_text);
+              }
+            });
+          });
+    }
+    $('input.service').change(function() {
+        service_input_check_text()
+        renderResult();
+        current_services_text = [];
+      });
+    
 })
