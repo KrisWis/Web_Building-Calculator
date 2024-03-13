@@ -8,6 +8,22 @@ const door_models = {
     "Модель №14": { "по ширине": 4, "по высоте": 1 }, "Модель №15 (Prav)": { "по ширине": 0, "по высоте": 2 }, "Модель №15 (Lev)": { "по ширине": 0, "по высоте": 2 }
 };
 const door_model_tariff = 1100;
+const door_filling = {
+    "0-450": { "ЛДСП 10мм": 9100, "Стекло прозрачное": 9100, "Стекло  тонированое прозрачное": 10850, "Зеркало Серебро": 9100, "Зеркало (Графит, Бронза)": 10850, "Сатин (Стекло, матовое)": 10500, "Сатин (Матовое, Графит, Бронза)": 12450 },
+    "451-500": { "ЛДСП 10мм": 9380, "Стекло прозрачное": 9380, "Стекло  тонированое прозрачное": 11130, "Зеркало Серебро": 9380, "Зеркало (Графит, Бронза)": 11130, "Сатин (Стекло, матовое)": 10920, "Сатин (Матовое, Графит, Бронза)": 12870 },
+    "501-550": { "ЛДСП 10мм": 9660, "Стекло прозрачное": 9660, "Стекло  тонированое прозрачное": 11410, "Зеркало Серебро": 9660, "Зеркало (Графит, Бронза)": 11410, "Сатин (Стекло, матовое)": 11340, "Сатин (Матовое, Графит, Бронза)": 13290 },
+    "551-600": { "ЛДСП 10мм": 9940, "Стекло прозрачное": 9940, "Стекло  тонированое прозрачное": 11690, "Зеркало Серебро": 9940, "Зеркало (Графит, Бронза)": 11690, "Сатин (Стекло, матовое)": 11760, "Сатин (Матовое, Графит, Бронза)": 13710 },
+    "601-650": { "ЛДСП 10мм": 10220, "Стекло прозрачное": 10220, "Стекло  тонированое прозрачное": 11970, "Зеркало Серебро": 10220, "Зеркало (Графит, Бронза)": 11970, "Сатин (Стекло, матовое)": 12180, "Сатин (Матовое, Графит, Бронза)": 14130 },
+    "651-700": { "ЛДСП 10мм": 10500, "Стекло прозрачное": 10500, "Стекло  тонированое прозрачное": 12250, "Зеркало Серебро": 10500, "Зеркало (Графит, Бронза)": 12250, "Сатин (Стекло, матовое)": 12600, "Сатин (Матовое, Графит, Бронза)": 14550 },
+    "701-750": { "ЛДСП 10мм": 10780, "Стекло прозрачное": 10780, "Стекло  тонированое прозрачное": 12530, "Зеркало Серебро": 10780, "Зеркало (Графит, Бронза)": 12530, "Сатин (Стекло, матовое)": 13020, "Сатин (Матовое, Графит, Бронза)": 14970 },
+    "751-800": { "ЛДСП 10мм": 11060, "Стекло прозрачное": 11060, "Стекло  тонированое прозрачное": 12810, "Зеркало Серебро": 11060, "Зеркало (Графит, Бронза)": 12810, "Сатин (Стекло, матовое)": 13440, "Сатин (Матовое, Графит, Бронза)": 15390 },
+    "801-850": { "ЛДСП 10мм": 11340, "Стекло прозрачное": 11340, "Стекло  тонированое прозрачное": 13090, "Зеркало Серебро": 11340, "Зеркало (Графит, Бронза)": 13090, "Сатин (Стекло, матовое)": 13860, "Сатин (Матовое, Графит, Бронза)": 15810 },
+    "851-900": { "ЛДСП 10мм": 11620, "Стекло прозрачное": 11620, "Стекло  тонированое прозрачное": 13370, "Зеркало Серебро": 11620, "Зеркало (Графит, Бронза)": 13370, "Сатин (Стекло, матовое)": 14280, "Сатин (Матовое, Графит, Бронза)": 16230 },
+    "901-950": { "ЛДСП 10мм": 11900, "Стекло прозрачное": 11900, "Стекло  тонированое прозрачное": 13650, "Зеркало Серебро": 11900, "Зеркало (Графит, Бронза)": 13650, "Сатин (Стекло, матовое)": 14700, "Сатин (Матовое, Графит, Бронза)": 16650 },
+    "951-1000": { "ЛДСП 10мм": 12810, "Стекло прозрачное": 12810, "Стекло  тонированое прозрачное": 13930, "Зеркало Серебро": 12180, "Зеркало (Графит, Бронза)": 13930, "Сатин (Стекло, матовое)": 15120, "Сатин (Матовое, Графит, Бронза)": 17070 },
+    "1001-1050": { "ЛДСП 10мм": 12460, "Стекло прозрачное": 12460, "Стекло  тонированое прозрачное": 14210, "Зеркало Серебро": 12460, "Зеркало (Графит, Бронза)": 14210, "Сатин (Стекло, матовое)": 15540, "Сатин (Матовое, Графит, Бронза)": 17490 },
+    "1051-1100": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
+}
 
 
 /* Код */
@@ -44,6 +60,9 @@ $(document).ready(function () {
                 del: 0,
                 text: '',
             },
+            system: {
+                text: '',
+            }
         },
         doorFilling: {
             value: 0,
@@ -62,18 +81,19 @@ $(document).ready(function () {
     };
 
     function calc() {
-        let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
-        let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
-        let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
+        // let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
+        // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
+        //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
+        let priceMPog = 1;
 
         let priceTableDoor = 0;
-        $.each(calcPrices.napol[calcUserSelect.doorFilling.value].prices, function (i, v) {
-            if (v.min <= doorWidth && v.max >= doorWidth) {
-                priceTableDoor = (v.price + ((v.price / 100) * calcAddPercPrice)) * calcUserSelect.doorParams.amount.value;
-            }
-        })
+        // $.each(calcPrices.napol[calcUserSelect.doorFilling.value].prices, function (i, v) {
+        //     if (v.min <= doorWidth && v.max >= doorWidth) {
+        //         priceTableDoor = (v.price + ((v.price / 100) * calcAddPercPrice)) * calcUserSelect.doorParams.amount.value;
+        //     }
+        // })
         calcItog.doorPrice = priceMPog + priceTableDoor;
-        calcItog.doorPrice += calcUserSelect.doorParams.color.price * calcUserSelect.doorParams.amount.value;
+        calcItog.doorPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 1364) * calcUserSelect.doorParams.amount.value;
 
         if (calcUserSelect.addOption.length) {
             $.each(calcUserSelect.addOption, function (i, v) {
@@ -89,16 +109,32 @@ $(document).ready(function () {
             })
         }
 
-        calcItog.totalPrice = (calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
-            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / 1000)) +
-            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10;
+        let door_filling_price = 0;
+        for (let width in door_filling) {
+            const width_field = width.split("-").map((item) => Number(item));
+
+            if (width_field[0] <= calcUserSelect.openingParams.width && calcUserSelect.openingParams.width <= width_field[1]) {
+
+                for (let filling in door_filling[width]) {
+                    if (calcUserSelect.doorFilling.text == filling) {
+                        door_filling_price = door_filling[width][filling];
+                    }
+                }
+            }
+        }
+
+        calcItog.totalPrice = (((calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
+            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
+            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10)
+            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price;
         renderResult();
     }
 
     function renderResult() {
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
-        $('#calc-otp-width').html(calcUserSelect.openingParams.width);
+        $('#calc-otp-width').html(Math.ceil(calcUserSelect.openingParams.width / 5) * 5);
 
+        $('#calc-otp-system').html(calcUserSelect.doorParams.system.text.toLowerCase());
         $('#calc-otp-door-model').html(calcUserSelect.doorParams.model.text.toLowerCase());
         $('#calc-otp-door-amount').html(calcUserSelect.doorParams.amount.value);
 
@@ -109,7 +145,7 @@ $(document).ready(function () {
         $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice));
 
         $('#calc-copy-textarea').val(`Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}):
-📌 Раздвижная система Алютех опорная
+📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}
 цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽
 🛠 Монтаж - ${makeMoney(calcItog.montagePrice)} ₽
 🚛 Доставка - ${makeMoney(calcItog.deliveryPrice)} ₽
@@ -149,6 +185,9 @@ $(document).ready(function () {
 
         calcUserSelect.doorParams.model.del = +$('[name="calc-model-door"]').val();
         calcUserSelect.doorParams.model.text = $('[name="calc-model-door"] option:selected').text();
+
+        calcUserSelect.doorParams.system.text = $('[name="calc-model-system"] option:selected').text();
+
         if ($('[name="calc-door-nap"]:checked').length) {
             calcUserSelect.doorFilling.value = +$('[name="calc-door-nap"]:checked').val();
             calcUserSelect.doorFilling.text = calcPrices.napol[calcUserSelect.doorFilling.value].name;
