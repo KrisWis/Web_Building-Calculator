@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
 
 /* -------------------------------------------------------------- */
@@ -436,6 +434,7 @@ input:checked+.calc-radio-label .calc-radio-label-price {
         -ms-flex-direction: column;
         flex-direction: column;
     }
+
     .calc-inner-clm-row {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -448,15 +447,18 @@ input:checked+.calc-radio-label .calc-radio-label-price {
     .calc-door-add-opt-row-item {
         gap: 5px;
     }
+
     .calc-door-add-opt-row-item .calc-radio-label {
         gap: 5px;
     }
+
     .calc-door-add-opt-row-item-count .calc-radio-label {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
     }
+
     .calc-radio-label-inner {
         width: 100%;
         display: -webkit-box;
@@ -466,19 +468,27 @@ input:checked+.calc-radio-label .calc-radio-label-price {
         -ms-flex-pack: center;
         justify-content: center
     }
+
     .calc-radio-label-inner .calc-radio-label-select {
         max-width: 100%;
     }
+
     .calc-door-add-opt-row-item-count .calc-radio:checked+.calc-radio-label:before {
         top: 3px;
     }
+
     .calc-radio-label-inner .calc-radio-label-select,
     .calc-radio-label-inner .calc-radio-label-price {
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
     }
+
     .calc-inner-clms-wrapper {
         padding: 15px 15px;
     }
+}
+
+.calc-door-services-row {
+    flex-direction: column;
 }

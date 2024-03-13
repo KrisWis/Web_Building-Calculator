@@ -25,6 +25,9 @@ const door_filling = {
     "1051-1100": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
 }
 
+// Текста текущих активных Услуг.
+let current_services_text = []
+
 
 /* Код */
 $(document).ready(function () {
@@ -131,6 +134,11 @@ $(document).ready(function () {
     }
 
     function renderResult() {
+        $('#itog_results').html(`
+        Услуги: <br/>
+        ${current_services_text.join('<br/>')}
+        `);
+
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
         $('#calc-otp-width').html(Math.ceil(calcUserSelect.openingParams.width / 5) * 5);
 
@@ -367,6 +375,7 @@ $(document).ready(function () {
             offset_top: 50
         });
     }
+
     init();
     $('[name="calc-door-width"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
@@ -406,5 +415,24 @@ $(document).ready(function () {
         } catch (err) {
             console.log('Oops, unable to copy');
         }
+    });
+
+    // Проверка всех инпутов услуг, и добавления текста checked в массив. Нужно только для конечного текста
+    function service_input_check_text() {
+        $('.calc-door-services-row').each(function () {
+            $(this).find('input').each(function () {
+                if ($(this).prop('checked')) {
+                    var label = $(this).next('label')
+                    var text = label.find('.calc-radio-label-text').text();
+                    current_services_text.push(text);
+                    console.log(current_services_text);
+                }
+            });
+        });
+    }
+    $('input.service').change(function () {
+        service_input_check_text()
+        renderResult();
+        current_services_text = [];
     });
 })
