@@ -169,8 +169,8 @@
                     <div class="calc-hr-line"></div>
                     <div class="calc-clm-text" style = "font-size: 25px;">Услуги</div>
                     <div class="calc-inner-clm-row calc-door-services-row">
-                        <div class="calc-clm-text">Доставка</div>
 
+                        <div class="calc-clm-text">Доставка</div>
                         <div class="calc-inner-row-item">
                             <input type="radio" name="calc-door-service_dostavka" id="calc-door-service-inp-dostavka" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-dostavka" class="calc-radio-label">
@@ -185,7 +185,6 @@
                         </div>
 
                         <div class="calc-clm-text">Подъем</div>
-
                         <div class="calc-inner-row-item">
                             <input type="checkbox" name="calc-door-service_podyem_do_10" id="calc-door-service-inp-podyem_do_10" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-podyem_do_10" class="calc-radio-label">
@@ -198,7 +197,24 @@
                                 <div class="calc-radio-label-text">Всё что выше 10 этажа, сборка дверей на объекте без двойного материала</div>
                             </label>
                         </div>
-                    
+                        
+                        <div class="calc-clm-text">4 В 1</div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" name="calc-door-service_dveri_kupe" id="dveri-kupe" class="calc-radio service" value="0">
+                            <label for="dveri-kupe" class="calc-radio-label" onClick = "toggleClass('dveri-kupe')">
+                                <div class="calc-radio-label-text">Двери купе</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item dveri-kupe">
+                            <label for="calc-door-amount-inp" class="calc-label-input">Трек </label>
+                            <div class="calc-select-wrapper">
+                                <select name="calc-door-amount" id="calc-door-amount-inp" class="calc-select">
+                                    <option value="1">Открытый трек</option>
+                                    <option value="2">Закрытый трек</option>
+                                </select>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div class="calc-inner-clm calc-flex calc-flex-column">
