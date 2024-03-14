@@ -430,7 +430,7 @@ $(document).ready(function () {
             });
         });
     }
-    $('input.service').change(function () {
+    $('input.service[type="radio"], input.service[type="checkbox"]').change(function () {
         service_input_check_text()
         renderResult();
         current_services_text = [];
