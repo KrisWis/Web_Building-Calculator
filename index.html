@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Строительный калькулятор</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="calc-container">
@@ -169,23 +171,29 @@
                     <div class="calc-hr-line"></div>
                     <div class="calc-clm-text" style = "font-size: 25px;">Услуги</div>
                     <div class="calc-inner-clm-row calc-door-services-row">
-                        <div class="calc-clm-text">Доставка</div>
 
+                        <div class="calc-clm-text">Доставка</div>
                         <div class="calc-inner-row-item">
-                            <input type="radio" name="calc-door-service_dostavka" id="calc-door-service-inp-dostavka" class="calc-radio service" value="0">
+                            <input type="checkbox" name="calc-door-service_dostavka" id="calc-door-service-inp-dostavka" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-dostavka" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Москва в пределах МКАД</div>
                             </label>
                         </div>
+
                         <div class="calc-inner-row-item">
-                            <input type="radio" name="calc-door-service_dostavka" id="calc-door-service-inp-dostavka1" class="calc-radio service" value="0">
-                            <label for="calc-door-service-inp-dostavka1" class="calc-radio-label">
-                                <div class="calc-radio-label-text">МО до 200км от МКАД</div>
+                            <input type="checkbox" id="calc-door-service-inp-dostavka1" class="calc-radio service" value="0">
+                            <label for="calc-door-service-inp-dostavka1" class="calc-radio-label" onClick = "toggleClass('calc-door-service-inp-dostavka1')">
+                                <div class="calc-radio-label-text">Установка проставок для настенных треков (Увеличивает отступ от стены крепления)</div>
                             </label>
+                        </div>
+                        <div class="calc-inner-row-item calc-door-service-inp-dostavka1">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число километров</label>
+                                <input type="text" id="calc-door-service-inp-dostavka1-amount" class="calc-input calc-input-text" value="0">
+                            </div>
                         </div>
 
                         <div class="calc-clm-text">Подъем</div>
-
                         <div class="calc-inner-row-item">
                             <input type="checkbox" name="calc-door-service_podyem_do_10" id="calc-door-service-inp-podyem_do_10" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-podyem_do_10" class="calc-radio-label">
@@ -198,7 +206,137 @@
                                 <div class="calc-radio-label-text">Всё что выше 10 этажа, сборка дверей на объекте без двойного материала</div>
                             </label>
                         </div>
-                    
+                        
+                        <div class="calc-clm-text">4 В 1</div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" name="calc-door-service_dveri_kupe" id="dveri-kupe" class="calc-radio service" value="0">
+                            <label for="dveri-kupe" class="calc-radio-label" onClick = "toggleClass('dveri-kupe')">
+                                <div class="calc-radio-label-text">Двери купе</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item dveri-kupe">
+                            <label for="calc-door-amount-inp" class="calc-label-input">Трек </label>
+                            <div class="calc-select-wrapper">
+                                <select id="track-type" class="calc-select">
+                                    <option value="1">Открытый трек</option>
+                                    <option value="2">Закрытый трек</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="calc-clm-text" style = "font-size: 25px;">Дополнительные работы</div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="multi-otkrytie-checkbox" class="calc-radio service" value="0">
+                            <label for="multi-otkrytie-checkbox" class="calc-radio-label" onClick = "toggleClass('multi-otkrytie-checkbox')">
+                                <div class="calc-radio-label-text">Мультипоследовательное открытие</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item multi-otkrytie-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <input type="text" id="multi-otkrytie-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="sinchron-otkrytie-checkbox" class="calc-radio service" value="0">
+                            <label for="sinchron-otkrytie-checkbox" class="calc-radio-label" onClick = "toggleClass('sinchron-otkrytie-checkbox')">
+                                <div class="calc-radio-label-text">Синхронное открывание</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item sinchron-otkrytie-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <input type="text" id="sinchron-otkrytie-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="dovodchiki-checkbox" class="calc-radio service" value="0">
+                            <label for="dovodchiki-checkbox" class="calc-radio-label" onClick = "toggleClass('dovodchiki-checkbox')">
+                                <div class="calc-radio-label-text">Доводчики</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item dovodchiki-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <input type="text" id="dovodchiki-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="montazh-potolok-bez" class="calc-radio service" value="0">
+                            <label for="montazh-potolok-bez" class="calc-radio-label">
+                                <div class="calc-radio-label-text">Монтаж углубленние в потолке без тросиков</div>
+                            </label>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="montazh-potolok-s" class="calc-radio service" value="0">
+                            <label for="montazh-potolok-s" class="calc-radio-label">
+                                <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
+                            </label>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="prostavka-checkbox" class="calc-radio service" value="0">
+                            <label for="prostavka-checkbox" class="calc-radio-label" onClick = "toggleClass('prostavka-checkbox')">
+                                <div class="calc-radio-label-text">Установка проставок для настенных треков (Увеличивает отступ от стены крепления)</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item prostavka-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <input type="text" id="prostavka-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="plintus-checkbox" class="calc-radio service" value="0">
+                            <label for="plintus-checkbox" class="calc-radio-label" onClick = "toggleClass('plintus-checkbox')">
+                                <div class="calc-radio-label-text">Установка проставок для настенных треков (Увеличивает отступ от стены крепления)</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item plintus-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <input type="text" id="plintus-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="montazh-bez-zakladnoi-natyazhnoi" class="calc-radio service" value="0">
+                            <label for="montazh-bez-zakladnoi-natyazhnoi" class="calc-radio-label">
+                                <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
+                            </label>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="montazh-garderob" class="calc-radio service" value="0">
+                            <label for="montazh-garderob" class="calc-radio-label">
+                                <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
+                            </label>
+                        </div>
+
                 </div>
             </div>
             <div class="calc-inner-clm calc-flex calc-flex-column">
@@ -229,7 +367,7 @@
                                     🔑 Итого под ключ - <span id="calc-otp-itog">63 843</span> ₽
                                 </div>
                                 <div class="calc-text-otp" id = "itog_results">
-                                    Все услуги: 
+                                    Услуги: 
                                 </div>
                             </div>
                             <textarea cols="30" rows="10" style="width: 100%;" id="calc-copy-textarea"></textarea>

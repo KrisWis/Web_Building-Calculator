@@ -430,9 +430,24 @@ $(document).ready(function () {
             });
         });
     }
-    $('input.service').change(function () {
+    $('input.service[type="radio"], input.service[type="checkbox"]').change(function () {
         service_input_check_text()
         renderResult();
         current_services_text = [];
     });
-})
+
+    
+});
+// Функция для открытия или закрытия блоков
+function toggleClass(className) {
+    var checkboxes = document.getElementsByClassName(className);
+    var isChecked = document.getElementById(className).checked;
+
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (!isChecked) {
+        checkboxes[i].classList.add('active');
+      } else {
+        checkboxes[i].classList.remove('active');
+      }
+    }
+  }
