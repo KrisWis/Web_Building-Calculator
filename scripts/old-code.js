@@ -385,8 +385,8 @@ $(document).ready(function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
     });
-    $('.calc-select').on('input', function () {
-        checkAllFields()
+    $('.calc-select:not([id="track-type"])').on('input', function() {
+        checkAllFields();
     });
 
     $('[name="calc-montage"]').on('input', function () {
@@ -425,7 +425,6 @@ $(document).ready(function () {
                     var label = $(this).next('label')
                     var text = label.find('.calc-radio-label-text').text();
                     current_services_text.push(text);
-                    console.log(current_services_text);
                 }
             });
         });
