@@ -87,7 +87,7 @@ $(document).ready(function () {
         // let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
         // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
-        let priceMPog = 1;
+        let priceMPog = 0;
 
         let priceTableDoor = 0;
         // $.each(calcPrices.napol[calcUserSelect.doorFilling.value].prices, function (i, v) {
@@ -126,10 +126,10 @@ $(document).ready(function () {
             }
         }
 
-        calcItog.totalPrice = (((calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
+        calcItog.totalPrice = Math.floor((((calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10)
-            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price;
+            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price);
         renderResult();
     }
 
