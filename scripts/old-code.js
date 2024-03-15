@@ -26,7 +26,12 @@ const door_filling = {
 }
 
 // Текста текущих активных Услуг.
-let current_services_text = []
+let current_services_text = [];
+// Общая цена доставки
+let services_sum_cost = 0;
+
+// Текущие цены для услуг
+let current_services_price = {};
 
 
 /* Код */
@@ -138,6 +143,8 @@ $(document).ready(function () {
         Услуги: <br/>
         ${current_services_text.join('<br/>')}
         `);
+
+        $('#itog_dostavka').html(services_sum_cost);
 
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
         $('#calc-otp-width').html(Math.ceil(calcUserSelect.openingParams.width / 5) * 5);
@@ -400,7 +407,11 @@ $(document).ready(function () {
     $('[name="calc-razgruz"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
-    })
+    });
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#etagi-vruchnuyu-amount').trigger('input');
+    });
+    
     let copyTextareaBtn = document.querySelector('.calc-copy-btn');
 
     copyTextareaBtn.addEventListener('click', function () {
