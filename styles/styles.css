@@ -45,7 +45,7 @@
 }
 
 .calc-loader svg circle {
-  fill: #EF8354;
+  fill: #F8AF00;
 }
 
 .calc-inner-clm {
@@ -106,7 +106,7 @@
 }
 
 .calc-input:hover {
-  border-color: #EF8354;
+  border-color: #F8AF00;
 }
 
 .calc-select {
@@ -149,18 +149,18 @@
 }
 
 .calc-select-wrapper:hover select {
-  border-color: #EF8354;
+  border-color: #F8AF00;
 }
 
 .calc-select-wrapper:hover::before {
   transform: rotate(180deg);
-  color: #EF8354;
+  color: #F8AF00;
 }
 
 .calc-hr-line {
   width: 100%;
   height: 2px;
-  background-color: #EF8354;
+  background-color: #F8AF00;
   margin: 10px 0;
 }
 
@@ -190,12 +190,12 @@
   height: 20px;
   position: absolute;
   left: 0;
-  border: 2px solid #EF8354;
+  border: 2px solid #F8AF00;
   border-radius: 5px;
 }
 
 .calc-radio:checked + .calc-radio-label:after {
-  background-color: #EF8354;
+  background-color: #F8AF00;
 }
 
 .calc-radio:checked + .calc-radio-label:before {
@@ -243,7 +243,7 @@
 }
 
 input:checked + .calc-radio-label .calc-radio-label-price {
-  background-color: #EF8354;
+  background-color: #F8AF00;
 }
 
 .calc-radio-label-select {
@@ -292,7 +292,7 @@ input:checked + .calc-radio-label .calc-radio-label-price {
   background-color: #fff;
   border-radius: 5px;
   border: none;
-  border: 2px solid #EF8354 !important;
+  border: 2px solid #F8AF00 !important;
   transition: 0.2s;
   font-size: 15px;
   text-align: center;
@@ -301,7 +301,7 @@ input:checked + .calc-radio-label .calc-radio-label-price {
 .calc-copy-btn {
   width: 100%;
   padding: 15px 20px;
-  background-color: #EF8354;
+  background-color: #F8AF00;
   border: 2px solid transparent;
   border-radius: 15px;
   display: flex;
@@ -316,9 +316,9 @@ input:checked + .calc-radio-label .calc-radio-label-price {
 }
 
 .calc-copy-btn:hover {
-  border-color: #EF8354;
+  border-color: #F8AF00;
   background-color: transparent;
-  color: #EF8354;
+  color: #F8AF00;
 }
 
 #calc-copy-textarea {
@@ -368,33 +368,7 @@ input:checked + .calc-radio-label .calc-radio-label-price {
   .calc-inner-clms-wrapper {
     padding: 15px 15px;
   }
-}/*# sourceMappingURL=styles.css.map */
-
-/*Batyrhan 14.03*/
-.active{
-  display: block !important;
 }
-.calc-door-services-row{
+.calc-door-services-row {
   flex-direction: column;
-}
-.dveri-kupe{
-  display: none;
-}
-.multi-otkrytie-checkbox{
-  display: none;
-}
-.sinchron-otkrytie-checkbox{
-  display: none;
-}
-.dovodchiki-checkbox{
-  display: none;
-}
-.prostavka-checkbox{
-  display: none;
-}
-.plintus-checkbox{
-  display: none;
-}
-.calc-door-service-inp-dostavka1{
-  display: none;
-}
+}/*# sourceMappingURL=styles.css.map */
