@@ -492,3 +492,40 @@ input:checked+.calc-radio-label .calc-radio-label-price {
 .calc-door-services-row {
     flex-direction: column;
 }
+/*Batyrhan 14.03*/
+.active{
+  display: block !important;
+}
+.calc-door-services-row{
+  flex-direction: column;
+}
+.dveri-kupe{
+  display: none;
+}
+.multi-otkrytie-checkbox{
+  display: none;
+}
+.sinchron-otkrytie-checkbox{
+  display: none;
+}
+.dovodchiki-checkbox{
+  display: none;
+}
+.prostavka-checkbox{
+  display: none;
+}
+.plintus-checkbox{
+  display: none;
+}
+.calc-door-service-inp-dostavka1{
+  display: none;
+}
+.etagi-vruchnuyu{
+  display: none;
+}
+.plintus-checkbox{
+  display: none;
+}
+.error{
+  color: red;
+}
