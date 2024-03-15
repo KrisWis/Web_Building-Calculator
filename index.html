@@ -241,14 +241,15 @@
                             <label for="dveri-kupe" class="calc-radio-label" onClick = "toggleClass('dveri-kupe')">
                                 <div class="calc-radio-label-text">Двери купе</div>
                             </label>
+                            <span class="dveri-kupe-error error"></span>
                         </div>
 
                         <div class="calc-inner-row-item dveri-kupe">
                             <label for="track-type" class="calc-label-input">Трек </label>
                             <div class="calc-select-wrapper">
                                 <select id="track-type" class="calc-select">
-                                    <option value="1">Открытый трек</option>
-                                    <option value="2">Закрытый трек</option>
+                                    <option value="Открытый">Открытый трек</option>
+                                    <option value="Скрытый">Скрытый трек</option>
                                 </select>
                             </div>
                         </div>
@@ -302,7 +303,7 @@
                         <div class="calc-hr-line"></div>
 
                         <div class="calc-inner-row-item">
-                            <input type="checkbox" id="montazh-potolok-bez" class="calc-radio service" value="0">
+                            <input type="checkbox" id="montazh-potolok-bez" class="calc-radio service" value="montazh-potolok-bez">
                             <label for="montazh-potolok-bez" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Монтаж углубленние в потолке без тросиков</div>
                             </label>
@@ -311,7 +312,7 @@
                         <div class="calc-hr-line"></div>
 
                         <div class="calc-inner-row-item">
-                            <input type="checkbox" id="montazh-potolok-s" class="calc-radio service" value="0">
+                            <input type="checkbox" id="montazh-potolok-s" class="calc-radio service" value="montazh-potolok-s">
                             <label for="montazh-potolok-s" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
                             </label>
@@ -337,12 +338,12 @@
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="plintus-checkbox" class="calc-radio service" value="0">
                             <label for="plintus-checkbox" class="calc-radio-label" onClick = "toggleClass('plintus-checkbox')">
-                                <div class="calc-radio-label-text">Установка проставок для настенных треков (Увеличивает отступ от стены крепления)</div>
+                                <div class="calc-radio-label-text">Подрезка одного плинтуса</div>
                             </label>
                         </div>
                         <div class="calc-inner-row-item plintus-checkbox">
                             <div class="calc-inner-row-item">
-                                <label for="calc-door-width-inp" class="calc-label-input">Число механизмов</label>
+                                <label for="calc-door-width-inp" class="calc-label-input">Число плинтусов</label>
                                 <input type="text" id="plintus-amount" class="calc-input calc-input-text" value="0">
                             </div>
                         </div>
@@ -352,7 +353,7 @@
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="montazh-bez-zakladnoi-natyazhnoi" class="calc-radio service" value="0">
                             <label for="montazh-bez-zakladnoi-natyazhnoi" class="calc-radio-label">
-                                <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
+                                <div class="calc-radio-label-text">Монтаж без закладной в натяжном потолке для дверей купе</div>
                             </label>
                         </div>
 
@@ -361,8 +362,9 @@
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="montazh-garderob" class="calc-radio service" value="0">
                             <label for="montazh-garderob" class="calc-radio-label">
-                                <div class="calc-radio-label-text">Монтаж углубленние в потолке с тросиками</div>
+                                <div class="calc-radio-label-text">Монтаж гардеробной</div>
                             </label>
+                            <span class="montazh-garderob-error error"></span>
                         </div>
 
                 </div>
