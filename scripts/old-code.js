@@ -26,7 +26,12 @@ const door_filling = {
 }
 
 // Текста текущих активных Услуг.
-let current_services_text = []
+let current_services_text = [];
+// Общая цена доставки
+let services_sum_cost = 0;
+
+// Текущие цены для услуг
+let current_services_price = {};
 
 
 /* Код */
@@ -138,6 +143,8 @@ $(document).ready(function () {
         Услуги: <br/>
         ${current_services_text.join('<br/>')}
         `);
+
+        $('#itog_dostavka').html(services_sum_cost);
 
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
         $('#calc-otp-width').html(Math.ceil(calcUserSelect.openingParams.width / 5) * 5);
@@ -385,8 +392,8 @@ $(document).ready(function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
     });
-    $('.calc-select').on('input', function () {
-        checkAllFields()
+    $('.calc-select:not([id="track-type"])').on('input', function() {
+        checkAllFields();
     });
 
     $('[name="calc-montage"]').on('input', function () {
@@ -400,7 +407,11 @@ $(document).ready(function () {
     $('[name="calc-razgruz"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
-    })
+    });
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#etagi-vruchnuyu-amount').trigger('input');
+    });
+    
     let copyTextareaBtn = document.querySelector('.calc-copy-btn');
 
     copyTextareaBtn.addEventListener('click', function () {
@@ -425,15 +436,125 @@ $(document).ready(function () {
                     var label = $(this).next('label')
                     var text = label.find('.calc-radio-label-text').text();
                     current_services_text.push(text);
-                    console.log(current_services_text);
                 }
             });
         });
     }
-    $('input.service[type="radio"], input.service[type="checkbox"]').change(function () {
+    function services_end() {
+        for (var key in current_services_price) {
+            var value = current_services_price[key];
+            services_sum_cost += value;
+        }
         service_input_check_text()
         renderResult();
         current_services_text = [];
+        services_sum_cost = 0;
+    }
+
+    // Обработка данных всех услуг
+    $('#calc-door-service-inp-dostavka').change(function() {
+        var isChecked = $(this).is(':checked');
+        var sum = 3000;
+        if(isChecked){
+            current_services_price['Доставка в пределах МКАД'] = sum;
+        }
+        else{
+            delete current_services_price['Доставка в пределах МКАД'];
+        }
+        calc();
+        services_end();
+    });
+
+    $('#calc-door-service-inp-dostavka1').change(function() {
+        var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
+        var amount = $('#calc-door-service-inp-dostavka1-amount').val();
+        var sum = 3000 + (parseInt(amount) * 30);
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['МО до 200км от МКАД'] = sum;
+            }
+            else{
+                delete current_services_price['МО до 200км от МКАД'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#calc-door-service-inp-dostavka1-amount').on('input', function() {
+        var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
+        var amount = $('#calc-door-service-inp-dostavka1-amount').val();
+        var sum = 3000 + (parseInt(amount) * 30);
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['МО до 200км от МКАД'] = sum;
+            }
+            else{
+                delete current_services_price['МО до 200км от МКАД'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#etagi-vruchnuyu').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var amount = $('#etagi-vruchnuyu-amount').val();
+        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Только до 10 этажа вручную'] = sum;
+            }
+            else{
+                delete current_services_price['Только до 10 этажа вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#etagi-vruchnuyu-amount').on('input', function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var amount = $('#etagi-vruchnuyu-amount').val();
+        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Только до 10 этажа вручную'] = sum;
+            }
+            else{
+                delete current_services_price['Только до 10 этажа вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#calc-door-service-inp-podyem_posle_10').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var sum = 2000*calcUserSelect.doorParams.amount.value;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
+            }
+            else{
+                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#podvesnaya-peregorodka').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var sum = 2000*calcUserSelect.doorParams.amount.value;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
+            }
+            else{
+                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
+            }
+        }
+        calc();
+        services_end();
     });
 
     
