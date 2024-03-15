@@ -429,10 +429,121 @@ $(document).ready(function () {
             });
         });
     }
-    $('input.service[type="radio"], input.service[type="checkbox"]').change(function () {
+    function services_end() {
+        for (var key in current_services_price) {
+            var value = current_services_price[key];
+            services_sum_cost += value;
+        }
         service_input_check_text()
         renderResult();
         current_services_text = [];
+        services_sum_cost = 0;
+    }
+
+    // Обработка данных всех услуг
+    $('#calc-door-service-inp-dostavka').change(function() {
+        var isChecked = $(this).is(':checked');
+        var sum = 3000;
+        if(isChecked){
+            current_services_price['Доставка в пределах МКАД'] = sum;
+        }
+        else{
+            delete current_services_price['Доставка в пределах МКАД'];
+        }
+        calc();
+        services_end();
+    });
+
+    $('#calc-door-service-inp-dostavka1').change(function() {
+        var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
+        var amount = $('#calc-door-service-inp-dostavka1-amount').val();
+        var sum = 3000 + (parseInt(amount) * 30);
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['МО до 200км от МКАД'] = sum;
+            }
+            else{
+                delete current_services_price['МО до 200км от МКАД'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#calc-door-service-inp-dostavka1-amount').on('input', function() {
+        var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
+        var amount = $('#calc-door-service-inp-dostavka1-amount').val();
+        var sum = 3000 + (parseInt(amount) * 30);
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['МО до 200км от МКАД'] = sum;
+            }
+            else{
+                delete current_services_price['МО до 200км от МКАД'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#etagi-vruchnuyu').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var amount = $('#etagi-vruchnuyu-amount').val();
+        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Только до 10 этажа вручную'] = sum;
+            }
+            else{
+                delete current_services_price['Только до 10 этажа вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#etagi-vruchnuyu-amount').on('input', function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var amount = $('#etagi-vruchnuyu-amount').val();
+        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Только до 10 этажа вручную'] = sum;
+            }
+            else{
+                delete current_services_price['Только до 10 этажа вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#calc-door-service-inp-podyem_posle_10').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var sum = 2000*calcUserSelect.doorParams.amount.value;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
+            }
+            else{
+                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#podvesnaya-peregorodka').change(function() {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var sum = 2000*calcUserSelect.doorParams.amount.value;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
+            }
+            else{
+                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
+            }
+        }
+        calc();
+        services_end();
     });
 
     
