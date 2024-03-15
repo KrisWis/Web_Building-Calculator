@@ -183,7 +183,7 @@
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="calc-door-service-inp-dostavka1" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-dostavka1" class="calc-radio-label" onClick = "toggleClass('calc-door-service-inp-dostavka1')">
-                                <div class="calc-radio-label-text">Установка проставок для настенных треков (Увеличивает отступ от стены крепления)</div>
+                                <div class="calc-radio-label-text">МО до 200км от МКАД</div>
                             </label>
                         </div>
                         <div class="calc-inner-row-item calc-door-service-inp-dostavka1">
@@ -195,10 +195,16 @@
 
                         <div class="calc-clm-text">Подъем</div>
                         <div class="calc-inner-row-item">
-                            <input type="checkbox" name="calc-door-service_podyem_do_10" id="calc-door-service-inp-podyem_do_10" class="calc-radio service" value="0">
-                            <label for="calc-door-service-inp-podyem_do_10" class="calc-radio-label">
+                            <input type="checkbox" id="etagi-vruchnuyu" class="calc-radio service" value="0">
+                            <label for="etagi-vruchnuyu" class="calc-radio-label" onClick = "toggleClass('etagi-vruchnuyu')">
                                 <div class="calc-radio-label-text">Только до 10 этажа вручную</div>
                             </label>
+                        </div>
+                        <div class="calc-inner-row-item etagi-vruchnuyu">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число этажей</label>
+                                <input type="text" id="etagi-vruchnuyu-amount" class="calc-input calc-input-text" value="0">                            
+                            </div>
                         </div>
                         <div class="calc-inner-row-item">
                             <input type="checkbox" name="calc-door-service_podyem_posle_10" id="calc-door-service-inp-podyem_posle_10" class="calc-radio service" value="0">
@@ -213,6 +219,7 @@
                             <label for="podvesnaya-peregorodka" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Подвесная перегородка</div>
                             </label>
+                            <span class="error podvesnaya-peregorodka-error"></span>
                         </div>
 
                         <div class="calc-inner-row-item">
@@ -379,7 +386,7 @@
                                     🛠 Монтаж - <span><input type="text" name="calc-montage" id="calc-montage-inp" class="calc-otp-input" value="0"></span> ₽
                                 </div>
                                 <div class="calc-text-otp">
-                                    🚛 Доставка - <span><input type="text" name="calc-delivery" id="calc-delivery-inp" class="calc-otp-input" value="0"></span> ₽
+                                    🚛 Доставка - <span id = "itog_dostavka"></span> ₽
                                 </div>
                                 <div class="calc-text-otp">
                                     💪 Разгрузка - <span><input type="text" name="calc-razgruz" id="calc-razgruz-inp" class="calc-otp-input" value="0"></span> ₽
