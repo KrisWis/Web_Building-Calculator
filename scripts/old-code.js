@@ -27,12 +27,12 @@ const door_filling = {
 
 // Текста текущих активных Услуг.
 let current_services_text = [];
+
 // Общая цена доставки
 let services_sum_cost = 0;
 
 // Текущие цены для услуг
 let current_services_price = {};
-
 
 /* Код */
 $(document).ready(function () {
@@ -89,6 +89,24 @@ $(document).ready(function () {
     };
 
     function calc() {
+        /*Для изменения цены от 10% розничной*/
+        if (calcItog.totalPrice < 5000){
+            $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
+            $('#montazh-garderob').prop('checked', false);
+        }
+        else{
+            $('.montazh-garderob-error').html('');
+            var isChecked = $('#montazh-garderob').is(':checked');
+            var sum = calcItog.totalPrice * 0.1;
+            if(isChecked){
+                current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
+            }
+            else{
+                delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
+            }
+            services_end();
+        }
+        
         // let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
         // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
@@ -131,10 +149,23 @@ $(document).ready(function () {
             }
         }
 
-        calcItog.totalPrice = Math.floor((((calcItog.doorPrice + calcItog.montagePrice + calcItog.deliveryPrice + calcItog.razgruzPrice +
+        console.log("calcItog.doorPrice:", calcItog.doorPrice);
+        console.log("calcItog.montagePrice:", calcItog.montagePrice);
+        console.log("calcItog.razgruzPrice:", calcItog.razgruzPrice);
+        console.log("door_models[calcUserSelect.doorParams.model.text][\"по ширине\"]:", door_models[calcUserSelect.doorParams.model.text]["по ширине"]);
+        console.log("door_model_tariff:", door_model_tariff);
+        console.log("calcUserSelect.openingParams.width:", calcUserSelect.openingParams.width);
+        console.log("calcUserSelect.doorParams.amount.value:", calcUserSelect.doorParams.amount.value);
+        console.log("calcUserSelect.openingParams.height:", calcUserSelect.openingParams.height);
+        console.log("calcUserSelect.doorParams.system.text:", calcUserSelect.doorParams.system.text);
+        console.log("door_filling_price:", door_filling_price);
+        calcItog.totalPrice = Math.floor((((calcItog.doorPrice + calcItog.montagePrice + calcItog.razgruzPrice +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10)
             + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price);
+        
+        
+
         renderResult();
     }
 
@@ -396,22 +427,49 @@ $(document).ready(function () {
         checkAllFields();
     });
 
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#etagi-vruchnuyu-amount').trigger('input');
+    });
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#podvesnaya-peregorodka').trigger('change');
+    });
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#dveri-kupe').trigger('change');
+    });
+    $('#calc-door-amount-inp').on('input', function() {
+        $('#calc-door-service-inp-podyem_posle_10').trigger('change');
+    });
+
+    $('#multi-otkrytie-amount').on('input', function() {
+        $('#multi-otkrytie-checkbox').trigger('input');
+    });
+    $('#dovodchiki-amount').on('input', function() {
+        $('#dovodchiki-checkbox').trigger('input');
+    });
+    $('#sinchron-otkrytie-amount').on('input', function() {
+        $('#sinchron-otkrytie-checkbox').trigger('input');
+    });
+    $('#prostavka-amount').on('input', function() {
+        $('#prostavka-checkbox').trigger('input');
+    });
+    $('#plintus-amount').on('input', function() {
+        $('#plintus-checkbox').trigger('input');
+    });
+    $('#track-type').on('change', function() {
+        $('#dveri-kupe').trigger('change');
+    });
     $('[name="calc-montage"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
-    })
+    });
     $('[name="calc-delivery"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
-    })
+    });
     $('[name="calc-razgruz"]').on('input', function () {
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
     });
-    $('#calc-door-amount-inp').on('input', function() {
-        $('#etagi-vruchnuyu-amount').trigger('input');
-    });
-    
     let copyTextareaBtn = document.querySelector('.calc-copy-btn');
 
     copyTextareaBtn.addEventListener('click', function () {
@@ -528,36 +586,226 @@ $(document).ready(function () {
     });
 
     $('#calc-door-service-inp-podyem_posle_10').change(function() {
-        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var isChecked = $('#calc-door-service-inp-podyem_posle_10').is(':checked');
         var sum = 2000*calcUserSelect.doorParams.amount.value;
-        if (!isNaN(amount)){
-            if(isChecked){
-                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
-            }
-            else{
-                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
-            }
+        if(isChecked){
+            current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
+        }
+        else{
+            delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
         }
         calc();
         services_end();
     });
-
-    $('#podvesnaya-peregorodka').change(function() {
-        var isChecked = $('#etagi-vruchnuyu').is(':checked');
-        var sum = 2000*calcUserSelect.doorParams.amount.value;
-        if (!isNaN(amount)){
-            if(isChecked){
-                current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
-            }
-            else{
-                delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
-            }
-        }
-        calc();
-        services_end();
-    });
-
     
+    $('#podvesnaya-peregorodka').change(function() {
+        var isChecked = $('#podvesnaya-peregorodka').is(':checked');
+        var system = $('#calc-model-door-system').val();
+        if (calcItog.totalPrice < 4000){
+            $('.podvesnaya-peregorodka-error').html('Итоговая цена меньше 4,000 рублей');
+            $(this).prop('checked', false);
+            return
+        }
+        $('.podvesnaya-peregorodka-error').html('');
+        var sum = 3500 * calcUserSelect.doorParams.amount.value;
+        if (system == "Подвесная"){
+            $('.podvesnaya-peregorodka-error').html('');
+            if(isChecked){
+                current_services_price['Подвесная перегородка'] = sum;
+            }
+            else{
+                delete current_services_price['Подвесная перегородка'];
+            }
+        }
+        else{
+            $('.podvesnaya-peregorodka-error').html('Только для подвесной системы');
+            $(this).prop('checked', false);
+            return
+        }
+        calc();
+        services_end();
+    });
+
+    $('#dveri-kupe').change(function() {
+        if (calcItog.totalPrice < 4000){
+            $('.dveri-kupe-error').html('Итоговая цена меньше 4,000 рублей');
+            $(this).prop('checked', false);
+            return
+        }
+        $('.dveri-kupe-error').html('');
+        var isChecked = $('#dveri-kupe').is(':checked');
+        var sum = 0;
+        var trek = $('#track-type').val();
+        if (isChecked){
+            if(trek == "Открытый"){
+                if(calcUserSelect.doorParams.amount.value == 1){
+                    current_services_price['Открытый трек'] =  3000;
+                }
+                else{
+                    sum = 3000;
+                    sum += (calcUserSelect.doorParams.amount.value - 1) * 1500;
+                    current_services_price['Открытый трек'] =  sum;
+                }
+                delete current_services_price['Скрытый трек'];
+            }
+            else if(trek == "Скрытый"){
+                if(calcUserSelect.doorParams.amount.value == 1){
+                    current_services_price['Скрытый трек'] =  3500;
+                }
+                else{
+                    sum = 3000;
+                    sum += (calcUserSelect.doorParams.amount.value - 1) * 2000;
+                    current_services_price['Скрытый трек'] =  sum;
+                }
+                delete current_services_price['Открытый трек'];
+            }
+        }
+        else{
+            delete current_services_price['Открытый трек'];
+            delete current_services_price['Скрытый трек'];
+        }
+        calc();
+        services_end();
+    });
+
+    $('#multi-otkrytie-checkbox').on('input', function() {
+        var isChecked = $('#multi-otkrytie-checkbox').is(':checked');
+        var amount = $('#multi-otkrytie-amount').val();
+        var sum = parseInt(amount) * 4000;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Мультипоследовательное открытие'] = sum;
+            }
+            else{
+                delete current_services_price['Мультипоследовательное открытие'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#sinchron-otkrytie-checkbox').on('input', function() {
+        var isChecked = $('#sinchron-otkrytie-checkbox').is(':checked');
+        var amount = $('#sinchron-otkrytie-amount').val();
+        var sum = parseInt(amount) * 2000;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Синхронное открытие'] = sum;
+            }
+            else{
+                delete current_services_price['Синхронное открытие'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#dovodchiki-checkbox').on('input', function() {
+        var isChecked = $('#dovodchiki-checkbox').is(':checked');
+        var amount = $('#dovodchiki-amount').val();
+        var sum = parseInt(amount) * 1000;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Доводчики'] = sum;
+            }
+            else{
+                delete current_services_price['Доводчики'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#montazh-potolok-bez').change(function() {
+        var isChecked = $(this).is(':checked');
+        var sum = 5000;
+        if(isChecked){
+            current_services_price['Монтаж углубленние в потолке без тросиков'] = sum;
+        }
+        else{
+            delete current_services_price['Монтаж углубленние в потолке без тросиков'];
+        }
+        calc();
+        services_end();
+    });
+
+    $('#montazh-potolok-s').change(function() {
+        var isChecked = $(this).is(':checked');
+        var sum = 8000;
+        if(isChecked){
+            current_services_price['Монтаж углубленние в потолке с тросиками'] = sum;
+        }
+        else{
+            delete current_services_price['Монтаж углубленние в потолке с тросиками'];
+        }
+        calc();
+        services_end();
+    });
+    
+    $('#prostavka-checkbox').on('input', function() {
+        var isChecked = $('#prostavka-checkbox').is(':checked');
+        var amount = $('#prostavka-amount').val();
+        var sum = parseInt(amount) * 200;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Установка проставок для настенных треков (Увеличивает отступ от стены крепления)'] = sum;
+            }
+            else{
+                delete current_services_price['Установка проставок для настенных треков (Увеличивает отступ от стены крепления)'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#plintus-checkbox').on('input', function() {
+        var isChecked = $('#plintus-checkbox').is(':checked');
+        var amount = $('#plintus-amount').val();
+        var sum = parseInt(amount) * 200;
+        if (!isNaN(amount)){
+            if(isChecked){
+                current_services_price['Подрезка одного плинтуса'] = sum;
+            }
+            else{
+                delete current_services_price['Подрезка одного плинтуса'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#montazh-bez-zakladnoi-natyazhnoi').change(function() {
+        var isChecked = $(this).is(':checked');
+        var sum = 5000;
+        if(isChecked){
+            current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
+        }
+        else{
+            delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
+        }
+        calc();
+        services_end();
+    });
+
+    $('#montazh-garderob').change(function() {
+        if (calcItog.totalPrice < 5000){
+            $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
+            $('#montazh-garderob').prop('checked', false);
+            return
+        }
+        $('.montazh-garderob-error').html('');
+        var isChecked = $(this).is(':checked');
+        var sum = calcItog.totalPrice * 0.1;
+        if(isChecked){
+            current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
+        }
+        else{
+            delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
+        }
+        calc();
+        services_end();
+    });
+
 });
 // Функция для открытия или закрытия блоков
 function toggleClass(className) {
