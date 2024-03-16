@@ -143,14 +143,18 @@ $(document).ready(function () {
     }
 
     function renderResult() {
+        let services_copy_text = "";
         if (services_sum_cost != 0){
             $('#itog_results').html(`
             Услуги: <br/>
             ${current_services_text.join('<br/>')}
             `);
+            services_copy_text = `Услуги:\n
+${current_services_text.join('\n')}`;
         }
         else{
             $('#itog_results').html('');
+            services_copy_text = "";
         }
 
         $('#calc-opt-services').html(services_sum_cost);
@@ -168,13 +172,13 @@ $(document).ready(function () {
 
         $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost) );
 
-        $('#calc-copy-textarea').val(`Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}):
-📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}
-цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽
-🛠 Монтаж - ${makeMoney(calcItog.montagePrice)} ₽
-🚛 Доставка - ${makeMoney(calcItog.deliveryPrice)} ₽
-💪 Разгрузка - ${makeMoney(calcItog.razgruzPrice)} ₽
-🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice)} ₽
+        $('#calc-copy-textarea').val(`
+Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
+📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
+цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽\n
+💪 Услуги - ${makeMoney(services_sum_cost)} ₽\n
+🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
+${services_copy_text}
 `)
     }
 
