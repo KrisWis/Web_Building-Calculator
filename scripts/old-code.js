@@ -134,8 +134,8 @@ $(document).ready(function () {
 
         calcItog.totalPrice = Math.floor((((calcItog.doorPrice  +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
-            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10)
-            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price);
+            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
+            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price* 1.10));
         
         
 
