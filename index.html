@@ -7,45 +7,6 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
       crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /*Batyrhan 14.03*/
-        .active{
-          display: block !important;
-        }
-        .calc-door-services-row{
-          flex-direction: column;
-        }
-        .dveri-kupe{
-          display: none;
-        }
-        .multi-otkrytie-checkbox{
-          display: none;
-        }
-        .sinchron-otkrytie-checkbox{
-          display: none;
-        }
-        .dovodchiki-checkbox{
-          display: none;
-        }
-        .prostavka-checkbox{
-          display: none;
-        }
-        .plintus-checkbox{
-          display: none;
-        }
-        .calc-door-service-inp-dostavka1{
-          display: none;
-        }
-        .etagi-vruchnuyu{
-          display: none;
-        }
-        .plintus-checkbox{
-          display: none;
-        }
-        .error{
-          color: red;
-        }
-    </style>
 </head>
 <body>
     <div class="calc-container">
@@ -260,7 +221,7 @@
                             </label>
                             <span class="error podvesnaya-peregorodka-error"></span>
                         </div>
-
+                        <!---
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="raspashnaya-dver" class="calc-radio service" value="0">
                             <label for="raspashnaya-dver" class="calc-radio-label">
@@ -272,7 +233,7 @@
                             <label for="skladnaya-peregorodka" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Складная перегородка</div>
                             </label>
-                        </div>
+                        </div> -->
 
                         <div class="calc-clm-text">Двери купе</div>
                         <div class="calc-inner-row-item">
@@ -423,6 +384,7 @@
                                 <div class="calc-text-otp">
                                     цвет профиля <span id="calc-otp-door-color">темно-коричневый</span>, <span id="calc-otp-door-napol">стекло матовое</span> - <span id="calc-otp-door-price">52 443</span> ₽
                                 </div>
+                                <!--
                                 <div class="calc-text-otp">
                                     🛠 Монтаж - <span><input type="text" name="calc-montage" id="calc-montage-inp" class="calc-otp-input" value="0"></span> ₽
                                 </div>
@@ -431,6 +393,9 @@
                                 </div>
                                 <div class="calc-text-otp">
                                     💪 Разгрузка - <span><input type="text" name="calc-razgruz" id="calc-razgruz-inp" class="calc-otp-input" value="0"></span> ₽
+                                </div> -->
+                                <div class="calc-text-otp">
+                                    💪 Услуги - <span id = "calc-opt-services"></span> ₽
                                 </div>
                                 <div class="calc-text-otp">
                                     🔑 Итого под ключ - <span id="calc-otp-itog">63 843</span> ₽
