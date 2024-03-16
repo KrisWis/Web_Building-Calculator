@@ -357,7 +357,7 @@ ${services_copy_text}
     }
 
     function init() {
-        $.get('../data.json', function (data) {
+        $.get('https://kriswis.github.io/Web_Building-Calculator/data.json', function (data) {
             $.each(data.result, function (i, v) {
                 if (i == 0) {
                     $.each(v, function (index, value) {
