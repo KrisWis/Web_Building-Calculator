@@ -149,6 +149,9 @@ $(document).ready(function () {
             ${current_services_text.join('<br/>')}
             `);
         }
+        else{
+            $('#itog_results').html('');
+        }
 
         $('#calc-opt-services').html(services_sum_cost);
 
