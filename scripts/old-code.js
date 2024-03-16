@@ -88,25 +88,7 @@ $(document).ready(function () {
         totalPrice: 0
     };
 
-    function calc() {
-        /*Для изменения цены от 10% розничной*/
-        if (calcItog.totalPrice < 5000){
-            $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
-            $('#montazh-garderob').prop('checked', false);
-        }
-        else{
-            $('.montazh-garderob-error').html('');
-            var isChecked = $('#montazh-garderob').is(':checked');
-            var sum = calcItog.totalPrice * 0.1;
-            if(isChecked){
-                current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
-            }
-            else{
-                delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
-            }
-            services_end();
-        }
-        
+    function calc() {        
         // let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
         // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
@@ -149,17 +131,8 @@ $(document).ready(function () {
             }
         }
 
-        console.log("calcItog.doorPrice:", calcItog.doorPrice);
-        console.log("calcItog.montagePrice:", calcItog.montagePrice);
-        console.log("calcItog.razgruzPrice:", calcItog.razgruzPrice);
-        console.log("door_models[calcUserSelect.doorParams.model.text][\"по ширине\"]:", door_models[calcUserSelect.doorParams.model.text]["по ширине"]);
-        console.log("door_model_tariff:", door_model_tariff);
-        console.log("calcUserSelect.openingParams.width:", calcUserSelect.openingParams.width);
-        console.log("calcUserSelect.doorParams.amount.value:", calcUserSelect.doorParams.amount.value);
-        console.log("calcUserSelect.openingParams.height:", calcUserSelect.openingParams.height);
-        console.log("calcUserSelect.doorParams.system.text:", calcUserSelect.doorParams.system.text);
-        console.log("door_filling_price:", door_filling_price);
-        calcItog.totalPrice = Math.floor((((calcItog.doorPrice + calcItog.montagePrice + calcItog.razgruzPrice +
+
+        calcItog.totalPrice = Math.floor((((calcItog.doorPrice  +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))) * 1.10)
             + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + door_filling_price);
@@ -170,12 +143,14 @@ $(document).ready(function () {
     }
 
     function renderResult() {
-        $('#itog_results').html(`
-        Услуги: <br/>
-        ${current_services_text.join('<br/>')}
-        `);
+        if (services_sum_cost != 0){
+            $('#itog_results').html(`
+            Услуги: <br/>
+            ${current_services_text.join('<br/>')}
+            `);
+        }
 
-        $('#itog_dostavka').html(services_sum_cost);
+        $('#calc-opt-services').html(services_sum_cost);
 
         $('#calc-otp-height').html(calcUserSelect.openingParams.height);
         $('#calc-otp-width').html(Math.ceil(calcUserSelect.openingParams.width / 5) * 5);
@@ -188,7 +163,7 @@ $(document).ready(function () {
         $('#calc-otp-door-napol').html(calcUserSelect.doorFilling.text.toLowerCase());
         $('#calc-otp-door-price').html(makeMoney(roundNumber(calcItog.doorPrice, 0)))
 
-        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice));
+        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost) );
 
         $('#calc-copy-textarea').val(`Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}):
 📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}
@@ -257,6 +232,23 @@ $(document).ready(function () {
         calcItog.deliveryPrice = +$('[name="calc-delivery"]').val();
         calcItog.razgruzPrice = +$('[name="calc-razgruz"]').val();
         calc()
+        /*Для изменения цены от 10% розничной*/
+        if (calcItog.totalPrice < 5000){
+            $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
+            $('#montazh-garderob').prop('checked', false);
+        }
+        else{
+            $('.montazh-garderob-error').html('');
+            var isChecked = $('#montazh-garderob').is(':checked');
+            var sum = calcItog.totalPrice * 0.1;
+            if(isChecked){
+                current_services_price['Монтаж гардеробной'] = sum;
+            }
+            else{
+                delete current_services_price['Монтаж гардеробной'];
+            }
+            services_end();
+        }
     }
 
     function renderFields() {
@@ -775,7 +767,7 @@ $(document).ready(function () {
     });
 
     $('#montazh-bez-zakladnoi-natyazhnoi').change(function() {
-        var isChecked = $(this).is(':checked');
+        var isChecked = $("#montazh-bez-zakladnoi-natyazhnoi").is(':checked');
         var sum = 5000;
         if(isChecked){
             current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
@@ -785,6 +777,7 @@ $(document).ready(function () {
         }
         calc();
         services_end();
+        
     });
 
     $('#montazh-garderob').change(function() {
@@ -797,13 +790,14 @@ $(document).ready(function () {
         var isChecked = $(this).is(':checked');
         var sum = calcItog.totalPrice * 0.1;
         if(isChecked){
-            current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
+            current_services_price['Монтаж гардеробной'] = sum;
         }
         else{
-            delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
+            delete current_services_price['Монтаж гардеробной'];
         }
         calc();
         services_end();
+        console.log(current_services_price)
     });
 
 });
