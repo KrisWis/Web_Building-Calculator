@@ -26,7 +26,7 @@ const door_filling = {
 }
 
 // Текста текущих активных Услуг.
-let current_services_text = [];
+let current_services_text = [""];
 
 // Общая цена доставки
 let services_sum_cost = 0;
@@ -118,13 +118,15 @@ $(document).ready(function () {
         }
 
         let door_filling_price = 0;
+        let width_temp = 0
         for (let width in door_filling) {
             const width_field = width.split("-").map((item) => Number(item));
-
-            if (width_field[0] <= calcUserSelect.openingParams.width && calcUserSelect.openingParams.width <= width_field[1]) {
+            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15
+            if (width_field[0] <= width_temp && width_temp <= width_field[1]) {
 
                 for (let filling in door_filling[width]) {
                     if (calcUserSelect.doorFilling.text == filling) {
+                        console.log(width)
                         door_filling_price = door_filling[width][filling];
                     }
                 }
@@ -134,9 +136,9 @@ $(document).ready(function () {
         calcItog.totalPrice = Math.floor((((((calcItog.doorPrice +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 15)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
-            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) *
+            + (calcUserSelect.doorParams.system.text == "Подвесная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) *
             (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1))
-            * (calcUserSelect.doorParams.system.text == "Подвесная" ? calcUserSelect.doorParams.amount.value : 1);
+            * (calcUserSelect.doorParams.system.text == "Опорная" ? calcUserSelect.doorParams.amount.value : 1);
 
 
         renderResult();
@@ -150,7 +152,7 @@ $(document).ready(function () {
             ${current_services_text.join('<br/>')}
             `);
             services_copy_text = `Услуги:\n
-${current_services_text.join('\n')}`;
+${current_services_text.join("\n")}`;
         }
         else {
             $('#itog_results').html('');
@@ -169,14 +171,15 @@ ${current_services_text.join('\n')}`;
         $('#calc-otp-door-color').html(calcUserSelect.doorParams.color.text.toLowerCase());
         $('#calc-otp-door-napol').html(calcUserSelect.doorFilling.text.toLowerCase());
         $('#calc-otp-door-price').html(makeMoney(roundNumber(calcItog.doorPrice, 0)))
+        $('#calc-otp-preditog').html(makeMoney(calcItog.totalPrice));
 
         $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost));
 
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
-цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()}\n
-💪 Услуги - ${makeMoney(services_sum_cost)} ₽\n
+цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${calcItog.totalPrice} ₽\n
+💪 Монтаж изделия - ${makeMoney(services_sum_cost)} ₽\n
 🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
 ${services_copy_text}
 `)
