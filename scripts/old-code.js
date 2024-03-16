@@ -173,10 +173,10 @@ ${current_services_text.join('\n')}`;
 
         $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost));
 
-        /* 📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
-цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽\n */
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
+Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
+цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()}\n
 💪 Услуги - ${makeMoney(services_sum_cost)} ₽\n
 🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
 ${services_copy_text}
