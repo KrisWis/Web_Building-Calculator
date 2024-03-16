@@ -9,20 +9,20 @@ const door_models = {
 };
 const door_model_tariff = 1100;
 const door_filling = {
-    "0-450": { "ЛДСП 10мм": 9100, "Стекло прозрачное": 9100, "Стекло  тонированое прозрачное": 10850, "Зеркало Серебро": 9100, "Зеркало (Графит, Бронза)": 10850, "Сатин (Стекло, матовое)": 10500, "Сатин (Матовое, Графит, Бронза)": 12450 },
-    "451-500": { "ЛДСП 10мм": 9380, "Стекло прозрачное": 9380, "Стекло  тонированое прозрачное": 11130, "Зеркало Серебро": 9380, "Зеркало (Графит, Бронза)": 11130, "Сатин (Стекло, матовое)": 10920, "Сатин (Матовое, Графит, Бронза)": 12870 },
-    "501-550": { "ЛДСП 10мм": 9660, "Стекло прозрачное": 9660, "Стекло  тонированое прозрачное": 11410, "Зеркало Серебро": 9660, "Зеркало (Графит, Бронза)": 11410, "Сатин (Стекло, матовое)": 11340, "Сатин (Матовое, Графит, Бронза)": 13290 },
-    "551-600": { "ЛДСП 10мм": 9940, "Стекло прозрачное": 9940, "Стекло  тонированое прозрачное": 11690, "Зеркало Серебро": 9940, "Зеркало (Графит, Бронза)": 11690, "Сатин (Стекло, матовое)": 11760, "Сатин (Матовое, Графит, Бронза)": 13710 },
-    "601-650": { "ЛДСП 10мм": 10220, "Стекло прозрачное": 10220, "Стекло  тонированое прозрачное": 11970, "Зеркало Серебро": 10220, "Зеркало (Графит, Бронза)": 11970, "Сатин (Стекло, матовое)": 12180, "Сатин (Матовое, Графит, Бронза)": 14130 },
-    "651-700": { "ЛДСП 10мм": 10500, "Стекло прозрачное": 10500, "Стекло  тонированое прозрачное": 12250, "Зеркало Серебро": 10500, "Зеркало (Графит, Бронза)": 12250, "Сатин (Стекло, матовое)": 12600, "Сатин (Матовое, Графит, Бронза)": 14550 },
-    "701-750": { "ЛДСП 10мм": 10780, "Стекло прозрачное": 10780, "Стекло  тонированое прозрачное": 12530, "Зеркало Серебро": 10780, "Зеркало (Графит, Бронза)": 12530, "Сатин (Стекло, матовое)": 13020, "Сатин (Матовое, Графит, Бронза)": 14970 },
-    "751-800": { "ЛДСП 10мм": 11060, "Стекло прозрачное": 11060, "Стекло  тонированое прозрачное": 12810, "Зеркало Серебро": 11060, "Зеркало (Графит, Бронза)": 12810, "Сатин (Стекло, матовое)": 13440, "Сатин (Матовое, Графит, Бронза)": 15390 },
-    "801-850": { "ЛДСП 10мм": 11340, "Стекло прозрачное": 11340, "Стекло  тонированое прозрачное": 13090, "Зеркало Серебро": 11340, "Зеркало (Графит, Бронза)": 13090, "Сатин (Стекло, матовое)": 13860, "Сатин (Матовое, Графит, Бронза)": 15810 },
-    "851-900": { "ЛДСП 10мм": 11620, "Стекло прозрачное": 11620, "Стекло  тонированое прозрачное": 13370, "Зеркало Серебро": 11620, "Зеркало (Графит, Бронза)": 13370, "Сатин (Стекло, матовое)": 14280, "Сатин (Матовое, Графит, Бронза)": 16230 },
-    "901-950": { "ЛДСП 10мм": 11900, "Стекло прозрачное": 11900, "Стекло  тонированое прозрачное": 13650, "Зеркало Серебро": 11900, "Зеркало (Графит, Бронза)": 13650, "Сатин (Стекло, матовое)": 14700, "Сатин (Матовое, Графит, Бронза)": 16650 },
-    "951-1000": { "ЛДСП 10мм": 12810, "Стекло прозрачное": 12810, "Стекло  тонированое прозрачное": 13930, "Зеркало Серебро": 12180, "Зеркало (Графит, Бронза)": 13930, "Сатин (Стекло, матовое)": 15120, "Сатин (Матовое, Графит, Бронза)": 17070 },
-    "1001-1050": { "ЛДСП 10мм": 12460, "Стекло прозрачное": 12460, "Стекло  тонированое прозрачное": 14210, "Зеркало Серебро": 12460, "Зеркало (Графит, Бронза)": 14210, "Сатин (Стекло, матовое)": 15540, "Сатин (Матовое, Графит, Бронза)": 17490 },
-    "1051-1100": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
+    "0-450": { "ЛДСП 10мм": 9100, "Стекло прозрачное": 9100, "Стекло  тонированое прозрачное": 10850, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9100, "Зеркало (Графит, Бронза)": 10850, "Сатин (Стекло, матовое)": 10500, "Сатин (Матовое, Графит, Бронза)": 12450 },
+    "451-500": { "ЛДСП 10мм": 9380, "Стекло прозрачное": 9380, "Стекло  тонированое прозрачное": 11130, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9380, "Зеркало (Графит, Бронза)": 11130, "Сатин (Стекло, матовое)": 10920, "Сатин (Матовое, Графит, Бронза)": 12870 },
+    "501-550": { "ЛДСП 10мм": 9660, "Стекло прозрачное": 9660, "Стекло  тонированое прозрачное": 11410, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9660, "Зеркало (Графит, Бронза)": 11410, "Сатин (Стекло, матовое)": 11340, "Сатин (Матовое, Графит, Бронза)": 13290 },
+    "551-600": { "ЛДСП 10мм": 9940, "Стекло прозрачное": 9940, "Стекло  тонированое прозрачное": 11690, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9940, "Зеркало (Графит, Бронза)": 11690, "Сатин (Стекло, матовое)": 11760, "Сатин (Матовое, Графит, Бронза)": 13710 },
+    "601-650": { "ЛДСП 10мм": 10220, "Стекло прозрачное": 10220, "Стекло  тонированое прозрачное": 11970, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 10220, "Зеркало (Графит, Бронза)": 11970, "Сатин (Стекло, матовое)": 12180, "Сатин (Матовое, Графит, Бронза)": 14130 },
+    "651-700": { "ЛДСП 10мм": 10500, "Стекло прозрачное": 10500, "Стекло  тонированое прозрачное": 12250, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 10500, "Зеркало (Графит, Бронза)": 12250, "Сатин (Стекло, матовое)": 12600, "Сатин (Матовое, Графит, Бронза)": 14550 },
+    "701-750": { "ЛДСП 10мм": 10780, "Стекло прозрачное": 10780, "Стекло  тонированое прозрачное": 12530, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 10780, "Зеркало (Графит, Бронза)": 12530, "Сатин (Стекло, матовое)": 13020, "Сатин (Матовое, Графит, Бронза)": 14970 },
+    "751-800": { "ЛДСП 10мм": 11060, "Стекло прозрачное": 11060, "Стекло  тонированое прозрачное": 12810, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 11060, "Зеркало (Графит, Бронза)": 12810, "Сатин (Стекло, матовое)": 13440, "Сатин (Матовое, Графит, Бронза)": 15390 },
+    "801-850": { "ЛДСП 10мм": 11340, "Стекло прозрачное": 11340, "Стекло  тонированое прозрачное": 13090, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 11340, "Зеркало (Графит, Бронза)": 13090, "Сатин (Стекло, матовое)": 13860, "Сатин (Матовое, Графит, Бронза)": 15810 },
+    "851-900": { "ЛДСП 10мм": 11620, "Стекло прозрачное": 11620, "Стекло  тонированое прозрачное": 13370, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 11620, "Зеркало (Графит, Бронза)": 13370, "Сатин (Стекло, матовое)": 14280, "Сатин (Матовое, Графит, Бронза)": 16230 },
+    "901-950": { "ЛДСП 10мм": 11900, "Стекло прозрачное": 11900, "Стекло  тонированое прозрачное": 13650, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 11900, "Зеркало (Графит, Бронза)": 13650, "Сатин (Стекло, матовое)": 14700, "Сатин (Матовое, Графит, Бронза)": 16650 },
+    "951-1000": { "ЛДСП 10мм": 12810, "Стекло прозрачное": 12810, "Стекло  тонированое прозрачное": 13930, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12180, "Зеркало (Графит, Бронза)": 13930, "Сатин (Стекло, матовое)": 15120, "Сатин (Матовое, Графит, Бронза)": 17070 },
+    "1001-1050": { "ЛДСП 10мм": 12460, "Стекло прозрачное": 12460, "Стекло  тонированое прозрачное": 14210, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12460, "Зеркало (Графит, Бронза)": 14210, "Сатин (Стекло, матовое)": 15540, "Сатин (Матовое, Графит, Бронза)": 17490 },
+    "1051-1100": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
 }
 
 // Текста текущих активных Услуг.
@@ -88,7 +88,7 @@ $(document).ready(function () {
         totalPrice: 0
     };
 
-    function calc() {        
+    function calc() {
         // let doorWidth = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15;
         // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
@@ -132,19 +132,20 @@ $(document).ready(function () {
         }
 
 
-        calcItog.totalPrice = Math.floor((((calcItog.doorPrice  +
+        calcItog.totalPrice = Math.floor(((((calcItog.doorPrice +
             (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
-            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price* 1.10));
-        
-        
+            + (calcUserSelect.doorParams.system.text == "Опорная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) +
+            (calcUserSelect.openingParams.height > 2600 ? (calcUserSelect.openingParams.height - 2600) * 1.06 : 1);
+
+
 
         renderResult();
     }
 
     function renderResult() {
         let services_copy_text = "";
-        if (services_sum_cost != 0){
+        if (services_sum_cost != 0) {
             $('#itog_results').html(`
             Услуги: <br/>
             ${current_services_text.join('<br/>')}
@@ -152,7 +153,7 @@ $(document).ready(function () {
             services_copy_text = `Услуги:\n
 ${current_services_text.join('\n')}`;
         }
-        else{
+        else {
             $('#itog_results').html('');
             services_copy_text = "";
         }
@@ -170,12 +171,12 @@ ${current_services_text.join('\n')}`;
         $('#calc-otp-door-napol').html(calcUserSelect.doorFilling.text.toLowerCase());
         $('#calc-otp-door-price').html(makeMoney(roundNumber(calcItog.doorPrice, 0)))
 
-        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost) );
+        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost));
 
+        /* 📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
+цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽\n */
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
-📌 Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
-цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${makeMoney(roundNumber(calcItog.doorPrice, 0))} ₽\n
 💪 Услуги - ${makeMoney(services_sum_cost)} ₽\n
 🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
 ${services_copy_text}
@@ -240,18 +241,18 @@ ${services_copy_text}
         calcItog.razgruzPrice = +$('[name="calc-razgruz"]').val();
         calc()
         /*Для изменения цены от 10% розничной*/
-        if (calcItog.totalPrice < 5000){
+        if (calcItog.totalPrice < 5000) {
             $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
             $('#montazh-garderob').prop('checked', false);
         }
-        else{
+        else {
             $('.montazh-garderob-error').html('');
             var isChecked = $('#montazh-garderob').is(':checked');
             var sum = calcItog.totalPrice * 0.1;
-            if(isChecked){
+            if (isChecked) {
                 current_services_price['Монтаж гардеробной'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Монтаж гардеробной'];
             }
             services_end();
@@ -356,11 +357,11 @@ ${services_copy_text}
     }
 
     function init() {
-        $.get('https://script.google.com/macros/s/AKfycbx5Ft00__qiMWWcmGw8vZZ0o7od-KpsWM59lrWwf1fC5VnyUL2KX2FtpkctMC-UfHfbcw/exec', function (data) {
+        $.get('../data.json', function (data) {
             $.each(data.result, function (i, v) {
                 if (i == 0) {
                     $.each(v, function (index, value) {
-                        if (index > 0 && index < 8) {
+                        if (index > 0 && index < 10) {
                             calcPrices.napol.push({
                                 name: value,
                                 prices: [],
@@ -422,39 +423,39 @@ ${services_copy_text}
         $(this).val($(this).val().replace(/[^0-9]/g, ""));
         checkAllFields();
     });
-    $('.calc-select:not([id="track-type"])').on('input', function() {
+    $('.calc-select:not([id="track-type"])').on('input', function () {
         checkAllFields();
     });
 
-    $('#calc-door-amount-inp').on('input', function() {
+    $('#calc-door-amount-inp').on('input', function () {
         $('#etagi-vruchnuyu-amount').trigger('input');
     });
-    $('#calc-door-amount-inp').on('input', function() {
+    $('#calc-door-amount-inp').on('input', function () {
         $('#podvesnaya-peregorodka').trigger('change');
     });
-    $('#calc-door-amount-inp').on('input', function() {
+    $('#calc-door-amount-inp').on('input', function () {
         $('#dveri-kupe').trigger('change');
     });
-    $('#calc-door-amount-inp').on('input', function() {
+    $('#calc-door-amount-inp').on('input', function () {
         $('#calc-door-service-inp-podyem_posle_10').trigger('change');
     });
 
-    $('#multi-otkrytie-amount').on('input', function() {
+    $('#multi-otkrytie-amount').on('input', function () {
         $('#multi-otkrytie-checkbox').trigger('input');
     });
-    $('#dovodchiki-amount').on('input', function() {
+    $('#dovodchiki-amount').on('input', function () {
         $('#dovodchiki-checkbox').trigger('input');
     });
-    $('#sinchron-otkrytie-amount').on('input', function() {
+    $('#sinchron-otkrytie-amount').on('input', function () {
         $('#sinchron-otkrytie-checkbox').trigger('input');
     });
-    $('#prostavka-amount').on('input', function() {
+    $('#prostavka-amount').on('input', function () {
         $('#prostavka-checkbox').trigger('input');
     });
-    $('#plintus-amount').on('input', function() {
+    $('#plintus-amount').on('input', function () {
         $('#plintus-checkbox').trigger('input');
     });
-    $('#track-type').on('change', function() {
+    $('#track-type').on('change', function () {
         $('#dveri-kupe').trigger('change');
     });
     $('[name="calc-montage"]').on('input', function () {
@@ -509,43 +510,43 @@ ${services_copy_text}
     }
 
     // Обработка данных всех услуг
-    $('#calc-door-service-inp-dostavka').change(function() {
+    $('#calc-door-service-inp-dostavka').change(function () {
         var isChecked = $(this).is(':checked');
         var sum = 3000;
-        if(isChecked){
+        if (isChecked) {
             current_services_price['Доставка в пределах МКАД'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Доставка в пределах МКАД'];
         }
         calc();
         services_end();
     });
 
-    $('#calc-door-service-inp-dostavka1').change(function() {
+    $('#calc-door-service-inp-dostavka1').change(function () {
         var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
         var amount = $('#calc-door-service-inp-dostavka1-amount').val();
         var sum = 3000 + (parseInt(amount) * 30);
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['МО до 200км от МКАД'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['МО до 200км от МКАД'];
             }
         }
         calc();
         services_end();
     });
-    $('#calc-door-service-inp-dostavka1-amount').on('input', function() {
+    $('#calc-door-service-inp-dostavka1-amount').on('input', function () {
         var isChecked = $('#calc-door-service-inp-dostavka1').is(':checked');
         var amount = $('#calc-door-service-inp-dostavka1-amount').val();
         var sum = 3000 + (parseInt(amount) * 30);
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['МО до 200км от МКАД'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['МО до 200км от МКАД'];
             }
         }
@@ -553,30 +554,30 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#etagi-vruchnuyu').change(function() {
+    $('#etagi-vruchnuyu').change(function () {
         var isChecked = $('#etagi-vruchnuyu').is(':checked');
         var amount = $('#etagi-vruchnuyu-amount').val();
-        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
-        if (!isNaN(amount)){
-            if(isChecked){
+        var sum = 300 * calcUserSelect.doorParams.amount.value * amount;
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Только до 10 этажа вручную'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Только до 10 этажа вручную'];
             }
         }
         calc();
         services_end();
     });
-    $('#etagi-vruchnuyu-amount').on('input', function() {
+    $('#etagi-vruchnuyu-amount').on('input', function () {
         var isChecked = $('#etagi-vruchnuyu').is(':checked');
         var amount = $('#etagi-vruchnuyu-amount').val();
-        var sum = 300*calcUserSelect.doorParams.amount.value*amount;
-        if (!isNaN(amount)){
-            if(isChecked){
+        var sum = 300 * calcUserSelect.doorParams.amount.value * amount;
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Только до 10 этажа вручную'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Только до 10 этажа вручную'];
             }
         }
@@ -584,39 +585,39 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#calc-door-service-inp-podyem_posle_10').change(function() {
+    $('#calc-door-service-inp-podyem_posle_10').change(function () {
         var isChecked = $('#calc-door-service-inp-podyem_posle_10').is(':checked');
-        var sum = 2000*calcUserSelect.doorParams.amount.value;
-        if(isChecked){
+        var sum = 2000 * calcUserSelect.doorParams.amount.value;
+        if (isChecked) {
             current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Всё что выше 10 этажа, сборка дверей на объекте без двойного материала'];
         }
         calc();
         services_end();
     });
-    
-    $('#podvesnaya-peregorodka').change(function() {
+
+    $('#podvesnaya-peregorodka').change(function () {
         var isChecked = $('#podvesnaya-peregorodka').is(':checked');
         var system = $('#calc-model-door-system').val();
-        if (calcItog.totalPrice < 4000){
+        if (calcItog.totalPrice < 4000) {
             $('.podvesnaya-peregorodka-error').html('Итоговая цена меньше 4,000 рублей');
             $(this).prop('checked', false);
             return
         }
         $('.podvesnaya-peregorodka-error').html('');
         var sum = 3500 * calcUserSelect.doorParams.amount.value;
-        if (system == "Подвесная"){
+        if (system == "Подвесная") {
             $('.podvesnaya-peregorodka-error').html('');
-            if(isChecked){
+            if (isChecked) {
                 current_services_price['Подвесная перегородка'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Подвесная перегородка'];
             }
         }
-        else{
+        else {
             $('.podvesnaya-peregorodka-error').html('Только для подвесной системы');
             $(this).prop('checked', false);
             return
@@ -625,8 +626,8 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#dveri-kupe').change(function() {
-        if (calcItog.totalPrice < 4000){
+    $('#dveri-kupe').change(function () {
+        if (calcItog.totalPrice < 4000) {
             $('.dveri-kupe-error').html('Итоговая цена меньше 4,000 рублей');
             $(this).prop('checked', false);
             return
@@ -635,31 +636,31 @@ ${services_copy_text}
         var isChecked = $('#dveri-kupe').is(':checked');
         var sum = 0;
         var trek = $('#track-type').val();
-        if (isChecked){
-            if(trek == "Открытый"){
-                if(calcUserSelect.doorParams.amount.value == 1){
-                    current_services_price['Открытый трек'] =  3000;
+        if (isChecked) {
+            if (trek == "Открытый") {
+                if (calcUserSelect.doorParams.amount.value == 1) {
+                    current_services_price['Открытый трек'] = 3000;
                 }
-                else{
+                else {
                     sum = 3000;
                     sum += (calcUserSelect.doorParams.amount.value - 1) * 1500;
-                    current_services_price['Открытый трек'] =  sum;
+                    current_services_price['Открытый трек'] = sum;
                 }
                 delete current_services_price['Скрытый трек'];
             }
-            else if(trek == "Скрытый"){
-                if(calcUserSelect.doorParams.amount.value == 1){
-                    current_services_price['Скрытый трек'] =  3500;
+            else if (trek == "Скрытый") {
+                if (calcUserSelect.doorParams.amount.value == 1) {
+                    current_services_price['Скрытый трек'] = 3500;
                 }
-                else{
+                else {
                     sum = 3000;
                     sum += (calcUserSelect.doorParams.amount.value - 1) * 2000;
-                    current_services_price['Скрытый трек'] =  sum;
+                    current_services_price['Скрытый трек'] = sum;
                 }
                 delete current_services_price['Открытый трек'];
             }
         }
-        else{
+        else {
             delete current_services_price['Открытый трек'];
             delete current_services_price['Скрытый трек'];
         }
@@ -667,15 +668,15 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#multi-otkrytie-checkbox').on('input', function() {
+    $('#multi-otkrytie-checkbox').on('input', function () {
         var isChecked = $('#multi-otkrytie-checkbox').is(':checked');
         var amount = $('#multi-otkrytie-amount').val();
         var sum = parseInt(amount) * 4000;
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Мультипоследовательное открытие'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Мультипоследовательное открытие'];
             }
         }
@@ -683,15 +684,15 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#sinchron-otkrytie-checkbox').on('input', function() {
+    $('#sinchron-otkrytie-checkbox').on('input', function () {
         var isChecked = $('#sinchron-otkrytie-checkbox').is(':checked');
         var amount = $('#sinchron-otkrytie-amount').val();
         var sum = parseInt(amount) * 2000;
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Синхронное открытие'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Синхронное открытие'];
             }
         }
@@ -699,15 +700,15 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#dovodchiki-checkbox').on('input', function() {
+    $('#dovodchiki-checkbox').on('input', function () {
         var isChecked = $('#dovodchiki-checkbox').is(':checked');
         var amount = $('#dovodchiki-amount').val();
         var sum = parseInt(amount) * 1000;
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Доводчики'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Доводчики'];
             }
         }
@@ -715,41 +716,41 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#montazh-potolok-bez').change(function() {
+    $('#montazh-potolok-bez').change(function () {
         var isChecked = $(this).is(':checked');
         var sum = 5000;
-        if(isChecked){
+        if (isChecked) {
             current_services_price['Монтаж углубленние в потолке без тросиков'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Монтаж углубленние в потолке без тросиков'];
         }
         calc();
         services_end();
     });
 
-    $('#montazh-potolok-s').change(function() {
+    $('#montazh-potolok-s').change(function () {
         var isChecked = $(this).is(':checked');
         var sum = 8000;
-        if(isChecked){
+        if (isChecked) {
             current_services_price['Монтаж углубленние в потолке с тросиками'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Монтаж углубленние в потолке с тросиками'];
         }
         calc();
         services_end();
     });
-    
-    $('#prostavka-checkbox').on('input', function() {
+
+    $('#prostavka-checkbox').on('input', function () {
         var isChecked = $('#prostavka-checkbox').is(':checked');
         var amount = $('#prostavka-amount').val();
         var sum = parseInt(amount) * 200;
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Установка проставок для настенных треков (Увеличивает отступ от стены крепления)'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Установка проставок для настенных треков (Увеличивает отступ от стены крепления)'];
             }
         }
@@ -757,15 +758,15 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#plintus-checkbox').on('input', function() {
+    $('#plintus-checkbox').on('input', function () {
         var isChecked = $('#plintus-checkbox').is(':checked');
         var amount = $('#plintus-amount').val();
         var sum = parseInt(amount) * 200;
-        if (!isNaN(amount)){
-            if(isChecked){
+        if (!isNaN(amount)) {
+            if (isChecked) {
                 current_services_price['Подрезка одного плинтуса'] = sum;
             }
-            else{
+            else {
                 delete current_services_price['Подрезка одного плинтуса'];
             }
         }
@@ -773,22 +774,22 @@ ${services_copy_text}
         services_end();
     });
 
-    $('#montazh-bez-zakladnoi-natyazhnoi').change(function() {
+    $('#montazh-bez-zakladnoi-natyazhnoi').change(function () {
         var isChecked = $("#montazh-bez-zakladnoi-natyazhnoi").is(':checked');
         var sum = 5000;
-        if(isChecked){
+        if (isChecked) {
             current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Монтаж без закладной в натяжном потолке для дверей купе'];
         }
         calc();
         services_end();
-        
+
     });
 
-    $('#montazh-garderob').change(function() {
-        if (calcItog.totalPrice < 5000){
+    $('#montazh-garderob').change(function () {
+        if (calcItog.totalPrice < 5000) {
             $('.montazh-garderob-error').html('Итоговая цена меньше 5,000 рублей');
             $('#montazh-garderob').prop('checked', false);
             return
@@ -796,10 +797,10 @@ ${services_copy_text}
         $('.montazh-garderob-error').html('');
         var isChecked = $(this).is(':checked');
         var sum = calcItog.totalPrice * 0.1;
-        if(isChecked){
+        if (isChecked) {
             current_services_price['Монтаж гардеробной'] = sum;
         }
-        else{
+        else {
             delete current_services_price['Монтаж гардеробной'];
         }
         calc();
@@ -814,10 +815,10 @@ function toggleClass(className) {
     var isChecked = document.getElementById(className).checked;
 
     for (var i = 0; i < checkboxes.length; i++) {
-      if (!isChecked) {
-        checkboxes[i].classList.add('active');
-      } else {
-        checkboxes[i].classList.remove('active');
-      }
+        if (!isChecked) {
+            checkboxes[i].classList.add('active');
+        } else {
+            checkboxes[i].classList.remove('active');
+        }
     }
-  }
+}
