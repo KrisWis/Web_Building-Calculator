@@ -121,7 +121,7 @@ $(document).ready(function () {
         let width_temp = 0
         for (let width in door_filling) {
             const width_field = width.split("-").map((item) => Number(item));
-            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15
+            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 0.015
             if (width_field[0] <= width_temp && width_temp <= width_field[1]) {
 
                 for (let filling in door_filling[width]) {
@@ -134,7 +134,7 @@ $(document).ready(function () {
 
 
         calcItog.totalPrice = Math.floor((((((calcItog.doorPrice +
-            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000))) +
+            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000 + 0.015))) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
             + (calcUserSelect.doorParams.system.text == "Подвесная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) *
             (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1))
