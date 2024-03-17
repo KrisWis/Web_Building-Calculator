@@ -22,7 +22,7 @@ const door_filling = {
     "901-950": { "ЛДСП 10мм": 11900, "Стекло прозрачное": 11900, "Стекло  тонированое прозрачное": 13650, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 11900, "Зеркало (Графит, Бронза)": 13650, "Сатин (Стекло, матовое)": 14700, "Сатин (Матовое, Графит, Бронза)": 16650 },
     "951-1000": { "ЛДСП 10мм": 12810, "Стекло прозрачное": 12810, "Стекло  тонированое прозрачное": 13930, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12180, "Зеркало (Графит, Бронза)": 13930, "Сатин (Стекло, матовое)": 15120, "Сатин (Матовое, Графит, Бронза)": 17070 },
     "1001-1050": { "ЛДСП 10мм": 12460, "Стекло прозрачное": 12460, "Стекло  тонированое прозрачное": 14210, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12460, "Зеркало (Графит, Бронза)": 14210, "Сатин (Стекло, матовое)": 15540, "Сатин (Матовое, Графит, Бронза)": 17490 },
-    "1051-1100": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
+    "1051-11000000": { "ЛДСП 10мм": 12740, "Стекло прозрачное": 12740, "Стекло  тонированое прозрачное": 14490, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 12740, "Зеркало (Графит, Бронза)": 14490, "Сатин (Стекло, матовое)": 15960, "Сатин (Матовое, Графит, Бронза)": 17910 }
 }
 
 // Текста текущих активных Услуг.
@@ -121,7 +121,7 @@ $(document).ready(function () {
         let width_temp = 0
         for (let width in door_filling) {
             const width_field = width.split("-").map((item) => Number(item));
-            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 0.015
+            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value)
             if (width_field[0] <= width_temp && width_temp <= width_field[1]) {
 
                 for (let filling in door_filling[width]) {
@@ -132,9 +132,8 @@ $(document).ready(function () {
             }
         }
 
-
         calcItog.totalPrice = Math.floor((((((calcItog.doorPrice +
-            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000 + 0.015))) +
+            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)) +
             (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
             + (calcUserSelect.doorParams.system.text == "Подвесная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) *
             (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1))
