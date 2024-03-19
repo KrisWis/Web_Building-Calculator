@@ -185,7 +185,7 @@ ${current_services_text.join("\n")}`;
 
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
-Раздвижная система Алютех ${calcUserSelect.doorParams.system.text}\n
+Раздвижная система ALUTECH ${calcUserSelect.doorParams.system.text}\n
 цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${calcItog.totalPrice} ₽\n
 💪 Монтаж изделия - ${makeMoney(services_sum_cost)} ₽\n
 🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
