@@ -93,6 +93,7 @@ $(document).ready(function () {
         // let calcAddPercPrice = 10 + (calcUserSelect.openingParams.height > 2600 ? 10 : 0);
         //let priceMPog = (((calcUserSelect.doorParams.model.del * doorWidth) * calcUserSelect.doorParams.amount.value) / 1000) * calcPrices.mPog;
         let priceMPog = 0;
+        
 
         let priceTableDoor = 0;
         // $.each(calcPrices.napol[calcUserSelect.doorFilling.value].prices, function (i, v) {
@@ -101,7 +102,6 @@ $(document).ready(function () {
         //     }
         // })
         calcItog.doorPrice = priceMPog + priceTableDoor;
-        calcItog.doorPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 1364) * calcUserSelect.doorParams.amount.value;
 
         if (calcUserSelect.addOption.length) {
             $.each(calcUserSelect.addOption, function (i, v) {
@@ -121,24 +121,33 @@ $(document).ready(function () {
         let width_temp = 0
         for (let width in door_filling) {
             const width_field = width.split("-").map((item) => Number(item));
-            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value)
+            width_temp = (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value) + 15
             if (width_field[0] <= width_temp && width_temp <= width_field[1]) {
 
                 for (let filling in door_filling[width]) {
                     if (calcUserSelect.doorFilling.text == filling) {
-                        door_filling_price = door_filling[width][filling];
+                        door_filling_price = door_filling[width][filling] * calcUserSelect.doorParams.amount.value;
                     }
                 }
             }
         }
+        
+        calcItog.totalPrice = Math.floor(((((calcItog.doorPrice +
+            ((door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)) * calcUserSelect.doorParams.amount.value) +
+            ((door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000)) * calcUserSelect.doorParams.amount.value))))) *
+            (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1) + (door_filling_price * 1.10));
+            console.log("door_models:", door_models);
+            console.log("calcUserSelect.doorParams.model.text:", calcUserSelect.doorParams.model.text);
+            console.log("door_models[calcUserSelect.doorParams.model.text]:", door_models[calcUserSelect.doorParams.model.text]['по ширине']);
+            console.log("calcUserSelect.doorParams.amount.value:", calcUserSelect.doorParams.amount.value);
+            console.log("calcUserSelect.openingParams.width:", calcUserSelect.openingParams.width);
+            console.log("aasdasd", (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)
 
-        calcItog.totalPrice = Math.floor((((((calcItog.doorPrice +
-            (door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)) +
-            (door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000))))
-            + (calcUserSelect.doorParams.system.text == "Подвесная" ? 11000 * calcUserSelect.doorParams.amount.value : 0)) + (door_filling_price * 1.10))) *
-            (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1))
-            * (calcUserSelect.doorParams.system.text == "Опорная" ? calcUserSelect.doorParams.amount.value : 1);
-
+        calcItog.totalPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 2500) * calcUserSelect.doorParams.amount.value;
+        if(calcUserSelect.doorParams.system.text == "Подвесная"){
+            calcItog.totalPrice += 11000 * calcUserSelect.doorParams.amount.value;
+        }
+        
 
         renderResult();
     }
