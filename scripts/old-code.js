@@ -7,7 +7,7 @@ const door_models = {
     "Модель №11": { "по ширине": 2, "по высоте": 0 }, "Модель №12": { "по ширине": 2, "по высоте": 0 }, "Модель №13": { "по ширине": 4, "по высоте": 0 },
     "Модель №14": { "по ширине": 4, "по высоте": 1 }, "Модель №15 (Prav)": { "по ширине": 0, "по высоте": 2 }, "Модель №15 (Lev)": { "по ширине": 0, "по высоте": 2 }
 };
-const door_model_tariff = 1100;
+const door_model_tariff = 1200;
 const door_filling = {
     "0-450": { "ЛДСП 10мм": 9100, "Стекло прозрачное": 9100, "Стекло  тонированое прозрачное": 10850, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9100, "Зеркало (Графит, Бронза)": 10850, "Сатин (Стекло, матовое)": 10500, "Сатин (Матовое, Графит, Бронза)": 12450 },
     "451-500": { "ЛДСП 10мм": 9380, "Стекло прозрачное": 9380, "Стекло  тонированое прозрачное": 11130, "Стекло лакобель": 1, "Стекло рифлённое": 1, "Зеркало Серебро": 9380, "Зеркало (Графит, Бронза)": 11130, "Сатин (Стекло, матовое)": 10920, "Сатин (Матовое, Графит, Бронза)": 12870 },
@@ -135,10 +135,9 @@ $(document).ready(function () {
             }
         }
         
-        calcItog.totalPrice = Math.floor(((((calcItog.doorPrice +
-            ((door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)) * calcUserSelect.doorParams.amount.value) +
-            ((door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000)) * calcUserSelect.doorParams.amount.value))))) *
-            (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1) + (door_filling_price * 1.10));
+        calcItog.totalPrice = Math.floor((calcItog.doorPrice) *
+            (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1) + 
+            (door_filling_price * 1.10));
         // Цвет
         calcItog.totalPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 2500) * calcUserSelect.doorParams.amount.value;
         // Система
@@ -148,6 +147,21 @@ $(document).ready(function () {
         // Профиль
         calcItog.totalPrice += profil;
 
+        // Модель 
+        calcItog.totalPrice += door_models[calcUserSelect.doorParams.model.text]['по ширине'] * calcUserSelect.doorParams.amount.value * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value + 15)) / 1000;
+        calcItog.totalPrice += door_models[calcUserSelect.doorParams.model.text]['по высоте'] * calcUserSelect.doorParams.amount.value * door_model_tariff * calcUserSelect.openingParams.height / 1000;
+        
+        // Высота > 2600
+        if(calcUserSelect.openingParams.height > 2600){
+            let desyat_cm = 0;
+            let current_height = 0;
+            current_height = (calcUserSelect.openingParams.height - 2600) / 10;
+            desyat_cm = Math.ceil(current_height / 10)
+            calcItog.totalPrice += calcItog.totalPrice * (0.0 + (0.06 * desyat_cm))
+            console.log("current_height:", current_height);
+            console.log("desyat_cm:", desyat_cm);
+            console.log("calcItog.totalPrice:", calcItog.totalPrice);
+        }
         renderResult();
     }
 
