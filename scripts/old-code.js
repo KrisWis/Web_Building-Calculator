@@ -28,6 +28,9 @@ const door_filling = {
 // Текста текущих активных Услуг.
 let current_services_text = [""];
 
+// Профиль
+let profil = 0;
+
 // Общая цена доставки
 let services_sum_cost = 0;
 
@@ -136,18 +139,14 @@ $(document).ready(function () {
             ((door_models[calcUserSelect.doorParams.model.text]["по ширине"] * door_model_tariff * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)) * calcUserSelect.doorParams.amount.value) +
             ((door_models[calcUserSelect.doorParams.model.text]["по высоте"] * door_model_tariff * (calcUserSelect.openingParams.height / 1000)) * calcUserSelect.doorParams.amount.value))))) *
             (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1) + (door_filling_price * 1.10));
-            console.log("door_models:", door_models);
-            console.log("calcUserSelect.doorParams.model.text:", calcUserSelect.doorParams.model.text);
-            console.log("door_models[calcUserSelect.doorParams.model.text]:", door_models[calcUserSelect.doorParams.model.text]['по ширине']);
-            console.log("calcUserSelect.doorParams.amount.value:", calcUserSelect.doorParams.amount.value);
-            console.log("calcUserSelect.openingParams.width:", calcUserSelect.openingParams.width);
-            console.log("aasdasd", (calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value / 1000) + 0.015)
-
+        // Цвет
         calcItog.totalPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 2500) * calcUserSelect.doorParams.amount.value;
+        // Система
         if(calcUserSelect.doorParams.system.text == "Подвесная"){
             calcItog.totalPrice += 11000 * calcUserSelect.doorParams.amount.value;
         }
-        
+        // Профиль
+        calcItog.totalPrice += profil;
 
         renderResult();
     }
@@ -436,9 +435,13 @@ ${services_copy_text}
     $('.calc-select:not([id="track-type"])').on('input', function () {
         checkAllFields();
     });
-
+    /*
     $('#calc-door-amount-inp').on('input', function () {
         $('#etagi-vruchnuyu-amount').trigger('input');
+    });
+    */
+    $('#calc-door-amount-inp').on('input', function () {
+        $('#etagi-lift-amount').trigger('input');
     });
     $('#calc-door-amount-inp').on('input', function () {
         $('#podvesnaya-peregorodka').trigger('change');
@@ -448,6 +451,9 @@ ${services_copy_text}
     });
     $('#calc-door-amount-inp').on('input', function () {
         $('#calc-door-service-inp-podyem_posle_10').trigger('change');
+    });
+    $('#calc-door-amount-inp').on('input', function () {
+        $('#tonki-profil').trigger('input');
     });
 
     $('#multi-otkrytie-amount').on('input', function () {
@@ -567,13 +573,14 @@ ${services_copy_text}
     $('#etagi-vruchnuyu').change(function () {
         var isChecked = $('#etagi-vruchnuyu').is(':checked');
         var amount = $('#etagi-vruchnuyu-amount').val();
-        var sum = 300 * calcUserSelect.doorParams.amount.value * amount;
-        if (!isNaN(amount)) {
+        var amount1 = $('#etagi-vruchnuyu-amount1').val();
+        var sum = 300 * amount1 * amount;
+        if (!isNaN(amount) && !isNaN(amount1)) {
             if (isChecked) {
-                current_services_price['Только до 10 этажа вручную'] = sum;
+                current_services_price['Подъём вручную'] = sum;
             }
             else {
-                delete current_services_price['Только до 10 этажа вручную'];
+                delete current_services_price['Подъём вручную'];
             }
         }
         calc();
@@ -582,13 +589,61 @@ ${services_copy_text}
     $('#etagi-vruchnuyu-amount').on('input', function () {
         var isChecked = $('#etagi-vruchnuyu').is(':checked');
         var amount = $('#etagi-vruchnuyu-amount').val();
+        var amount1 = $('#etagi-vruchnuyu-amount1').val();
+        var sum = 300 * amount1 * amount;
+        if (!isNaN(amount) && !isNaN(amount1)) {
+            if (isChecked) {
+                current_services_price['Подъём вручную'] = sum;
+            }
+            else {
+                delete current_services_price['Подъём вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#etagi-vruchnuyu-amount1').on('input', function () {
+        var isChecked = $('#etagi-vruchnuyu').is(':checked');
+        var amount = $('#etagi-vruchnuyu-amount').val();
+        var amount1 = $('#etagi-vruchnuyu-amount1').val();
+        var sum = 300 * amount1 * amount;
+        if (!isNaN(amount) && !isNaN(amount1)) {
+            if (isChecked) {
+                current_services_price['Подъём вручную'] = sum;
+            }
+            else {
+                delete current_services_price['Подъём вручную'];
+            }
+        }
+        calc();
+        services_end();
+    });
+
+    $('#etagi-lift').change(function () {
+        var isChecked = $('#etagi-lift').is(':checked');
+        var amount = $('#etagi-lift-amount').val();
         var sum = 300 * calcUserSelect.doorParams.amount.value * amount;
         if (!isNaN(amount)) {
             if (isChecked) {
-                current_services_price['Только до 10 этажа вручную'] = sum;
+                current_services_price['Подъём на лифте'] = sum;
             }
             else {
-                delete current_services_price['Только до 10 этажа вручную'];
+                delete current_services_price['Подъём на лифте'];
+            }
+        }
+        calc();
+        services_end();
+    });
+    $('#etagi-lift-amount').on('input', function () {
+        var isChecked = $('#etagi-lift').is(':checked');
+        var amount = $('#etagi-lift-amount').val();
+        var sum = 300 * calcUserSelect.doorParams.amount.value * amount;
+        if (!isNaN(amount) ) {
+            if (isChecked) {
+                current_services_price['Подъём на лифте'] = sum;
+            }
+            else {
+                delete current_services_price['Подъём на лифте'];
             }
         }
         calc();
@@ -816,6 +871,20 @@ ${services_copy_text}
         calc();
         services_end();
         console.log(current_services_price)
+    });
+
+    $('#tonki-profil').on('change', function () {
+        var isChecked = $('#tonki-profil').is(':checked');
+        var sum = 2500 * calcUserSelect.doorParams.amount.value;
+        if (true) {
+            if (isChecked) {
+                profil += sum;
+            }
+            else {
+                profil -= sum
+            }
+        }
+        calc();
     });
 
 });
