@@ -168,10 +168,16 @@
                     <div class="calc-inner-clm-row calc-door-add-opt-row">
 
                     </div>-->
+                    <div class="calc-clm-text" style = "font-size: 25px;">Дополнительные опции</div>
+                    <div class="calc-inner-row-item">
+                        <input type="checkbox" id="tonki-profil" class="calc-radio" value="0">
+                        <label for="tonki-profil" class="calc-radio-label">
+                            <div class="calc-radio-label-text">Тонкий профиль</div>
+                        </label>
+                    </div>
 
-                    <div class="calc-hr-line"></div>
                     <div class="calc-clm-text" style = "font-size: 25px;">Услуги</div>
-                    <div class="calc-inner-clm-row calc-door-services-row">
+                    <div class="calc-inner-clm-row calc-door-services-row">                     
 
                         <div class="calc-clm-text">Доставка</div>
                         <div class="calc-inner-row-item">
@@ -198,7 +204,7 @@
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="etagi-vruchnuyu" class="calc-radio service" value="0">
                             <label for="etagi-vruchnuyu" class="calc-radio-label" onClick = "toggleClass('etagi-vruchnuyu')">
-                                <div class="calc-radio-label-text">Только до 10 этажа вручную</div>
+                                <div class="calc-radio-label-text">Ручной подъём</div>
                             </label>
                         </div>
                         <div class="calc-inner-row-item etagi-vruchnuyu">
@@ -207,12 +213,33 @@
                                 <input type="text" id="etagi-vruchnuyu-amount" class="calc-input calc-input-text" value="0">                            
                             </div>
                         </div>
+                        <div class="calc-inner-row-item etagi-vruchnuyu">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число заготовок</label>
+                                <input type="text" id="etagi-vruchnuyu-amount1" class="calc-input calc-input-text" value="0">                            
+                            </div>
+                        </div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="etagi-lift" class="calc-radio service" value="0">
+                            <label for="etagi-lift" class="calc-radio-label" onClick = "toggleClass('etagi-lift')">
+                                <div class="calc-radio-label-text">Подъём на лифте</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item etagi-lift">
+                            <div class="calc-inner-row-item">
+                                <label for="etagi-lift-amount" class="calc-label-input">Число этажей</label>
+                                <input type="text" id="etagi-lift-amount" class="calc-input calc-input-text" value="0">                            
+                            </div>
+                        </div>
+                        <!--
                         <div class="calc-inner-row-item">
                             <input type="checkbox" name="calc-door-service_podyem_posle_10" id="calc-door-service-inp-podyem_posle_10" class="calc-radio service" value="0">
                             <label for="calc-door-service-inp-podyem_posle_10" class="calc-radio-label">
                                 <div class="calc-radio-label-text">Всё что выше 10 этажа, сборка дверей на объекте без двойного материала</div>
                             </label>
-                        </div>
+                        </div> 
+                        -->
                         
                         <div class="calc-clm-text">4 В 1</div>
                         <div class="calc-inner-row-item">
