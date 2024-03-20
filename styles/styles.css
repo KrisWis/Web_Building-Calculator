@@ -410,3 +410,9 @@ input:checked + .calc-radio-label .calc-radio-label-price {
 .error{
   color: red;
 }
+.etagi-lift{
+  display: none;
+}
+.calc-door-services-row .calc-radio-label{
+  justify-content: space-between;
+}
