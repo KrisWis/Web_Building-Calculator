@@ -371,48 +371,53 @@ input:checked + .calc-radio-label .calc-radio-label-price {
 }
 .calc-door-services-row {
   flex-direction: column;
-}/*# sourceMappingURL=styles.css.map */
+}
 
 /*Batyrhan 14.03*/
-.active{
+.active {
   display: block !important;
 }
-.calc-door-services-row{
+
+.calc-door-services-row {
   flex-direction: column;
 }
-.dveri-kupe{
+
+.dveri-kupe {
   display: none;
 }
-.multi-otkrytie-checkbox{
+
+.multi-otkrytie-checkbox {
   display: none;
 }
-.sinchron-otkrytie-checkbox{
+
+.sinchron-otkrytie-checkbox {
   display: none;
 }
-.dovodchiki-checkbox{
+
+.dovodchiki-checkbox {
   display: none;
 }
-.prostavka-checkbox{
+
+.prostavka-checkbox {
   display: none;
 }
-.plintus-checkbox{
+
+.plintus-checkbox {
   display: none;
 }
-.calc-door-service-inp-dostavka1{
+
+.calc-door-service-inp-dostavka1 {
   display: none;
 }
-.etagi-vruchnuyu{
+
+.etagi-vruchnuyu {
   display: none;
 }
-.plintus-checkbox{
+
+.plintus-checkbox {
   display: none;
 }
-.error{
+
+.error {
   color: red;
-}
-.etagi-lift{
-  display: none;
-}
-.calc-door-services-row .calc-radio-label{
-  justify-content: space-between;
-}
+}/*# sourceMappingURL=styles.css.map */
