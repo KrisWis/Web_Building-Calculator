@@ -160,19 +160,22 @@
                     <div class="calc-hr-line"></div>
                     <div class="calc-clm-text">Наполнение двери</div>
                     <div class="calc-inner-clm-row calc-door-nap-row">
-
+                        
                     </div>
-                    <!--
-                    <div class="calc-hr-line"></div>
-                    <div class="calc-clm-text">Дополнительные опции</div>
-                    <div class="calc-inner-clm-row calc-door-add-opt-row">
-
-                    </div>-->
                     <div class="calc-clm-text" style = "font-size: 25px;">Дополнительные опции</div>
+
+                    <div class="calc-clm-text" style = "font-size: 25px;">Профиль</div>
                     <div class="calc-inner-row-item">
                         <input type="checkbox" id="tonki-profil" class="calc-radio" value="0">
                         <label for="tonki-profil" class="calc-radio-label">
-                            <div class="calc-radio-label-text">161 Slim</div>
+                            <div class="calc-radio-label-text">Узкий (161-162)</div>
+                        </label>
+                    </div>
+
+                    <div class="calc-inner-row-item">
+                        <input type="checkbox" id="tonki-profil1" class="calc-radio" value="0">
+                        <label for="tonki-profil1" class="calc-radio-label">
+                            <div class="calc-radio-label-text">Профиль 170 (H)</div>
                         </label>
                     </div>
 
@@ -200,7 +203,20 @@
                             </div>
                         </div>
 
+
                         <div class="calc-clm-text">Подъем</div>
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="razgruzka-checkbox" class="calc-radio service" value="0">
+                            <label for="razgruzka-checkbox" class="calc-radio-label" onClick = "toggleClass('razgruzka-checkbox')">
+                                <div class="calc-radio-label-text">Разгрузка</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item razgruzka-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="razgruzka-amount" class="calc-label-input">Число этажей</label>
+                                <input type="text" id="razgruzka-amount" class="calc-input calc-input-text" value="0">                            
+                            </div>
+                        </div>
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="etagi-vruchnuyu" class="calc-radio service" value="0">
                             <label for="etagi-vruchnuyu" class="calc-radio-label" onClick = "toggleClass('etagi-vruchnuyu')">
@@ -284,6 +300,29 @@
 
 
                         <div class="calc-clm-text" style = "font-size: 25px;">Дополнительные работы</div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="zakladnaya" class="calc-radio service" value="zakladnaya">
+                            <label for="zakladnaya" class="calc-radio-label">
+                                <div class="calc-radio-label-text">Закладная</div>
+                            </label>
+                        </div>
+
+                        <div class="calc-hr-line"></div>
+
+                        <div class="calc-inner-row-item">
+                            <input type="checkbox" id="additionaltrack-checkbox" class="calc-radio service" value="0">
+                            <label for="additionaltrack-checkbox" class="calc-radio-label" onClick = "toggleClass('additionaltrack-checkbox')">
+                                <div class="calc-radio-label-text">Дополнительный трек</div>
+                            </label>
+                        </div>
+                        <div class="calc-inner-row-item additionaltrack-checkbox">
+                            <div class="calc-inner-row-item">
+                                <label for="calc-door-width-inp" class="calc-label-input">Число треков</label>
+                                <input type="text" id="additionaltrack-amount" class="calc-input calc-input-text" value="0">
+                            </div>
+                        </div>
+                        <div class="calc-hr-line"></div>
                         <!--
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="multi-otkrytie-checkbox" class="calc-radio service" value="0">
@@ -314,7 +353,6 @@
                         </div> 
                         -->
 
-                        <div class="calc-hr-line"></div>
 
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="dovodchiki-checkbox" class="calc-radio service" value="0">
@@ -348,7 +386,6 @@
                         </div>
                         -->
 
-                        <div class="calc-hr-line"></div>
 
                         <div class="calc-inner-row-item">
                             <input type="checkbox" id="prostavka-checkbox" class="calc-radio service" value="0">
@@ -426,7 +463,7 @@
                                     💪 Разгрузка - <span><input type="text" name="calc-razgruz" id="calc-razgruz-inp" class="calc-otp-input" value="0"></span> ₽
                                 </div> -->
                                 <div class="calc-text-otp">
-                                    💪 Монтаж изделия - <span id = "calc-opt-services"></span> ₽
+                                    💪 Монтаж изделия - <span id = "calc-opt-services"></span> ₽ 
                                 </div>
                                 <div class="calc-text-otp">
                                     🔑 Итого под ключ - <span id="calc-otp-itog">63 843</span> ₽
