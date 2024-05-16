@@ -204,7 +204,7 @@
   content: "\f00c";
   color: #fff;
   position: absolute;
-  left: 3px;
+  left: 5px;
   z-index: 10;
 }
 
@@ -417,7 +417,15 @@ input:checked + .calc-radio-label .calc-radio-label-price {
 .plintus-checkbox {
   display: none;
 }
-
+.etagi-lift{
+  display: none;
+}
 .error {
   color: red;
 }/*# sourceMappingURL=styles.css.map */
+.additionaltrack-checkbox{
+  display: none;
+}
+.razgruzka-checkbox{
+  display: none;
+}
