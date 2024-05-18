@@ -21,6 +21,9 @@ const door_filling = {
     "1201-1300": { "Стекло пескоструйное": 53132, "Феникс (стекло тонированное зеркальное)": 42307, "ЛДСП 10мм": 19512, "Стекло прозрачное": 19512, "Стекло  тонированое прозрачное": 21612, "Стекло лакобель": 33102, "Стекло рифлённое": 52016, "Зеркало Серебро": 19512, "Зеркало (Графит, Бронза)": 21612, "Сатин (Стекло, матовое)": 23208, "Сатин (Матовое, Графит, Бронза)": 25548 },
     "1301-999999": { "Стекло пескоструйное": 53132, "Феникс (стекло тонированное зеркальное)": 42307, "ЛДСП 10мм": 19512, "Стекло прозрачное": 19512, "Стекло  тонированое прозрачное": 21612, "Стекло лакобель": 33102, "Стекло рифлённое": 52016, "Зеркало Серебро": 19512, "Зеркало (Графит, Бронза)": 21612, "Сатин (Стекло, матовое)": 23208, "Сатин (Матовое, Графит, Бронза)": 25548 },
 };
+// Текущие цены (общие)
+let current_general_price = {}
+
 // Текущие цены для профилей
 let current_profiles_text = {};
 
@@ -30,7 +33,7 @@ let current_services_text = [""];
 // Профиль
 let profil = 0;
 
-// Общая цена доставки
+// Общая цена сервиса
 let services_sum_cost = 0;
 
 // Текущие цены для услуг
@@ -134,16 +137,16 @@ jQuery(document).ready(function ($) {
                 }
             }
         }
-        
-        calcItog.totalPrice = Math.floor((calcItog.doorPrice) *
-            (calcUserSelect.openingParams.height >= 2600 ? (Math.ceil((calcUserSelect.openingParams.height - 2599) / 100) * 0.06) + 1 : 1) + 
-            door_filling_price);
+
+        // Наполнение
+        calcItog.totalPrice = Math.floor((calcItog.doorPrice) + door_filling_price);
+
+        // Общие
+        calcItog.totalPrice += Object.values(current_general_price).reduce((acc, curr) => acc + curr, 0)
+
         // Цвет
         calcItog.totalPrice += (calcUserSelect.doorParams.color.text == "Черный матовый" && 3300) * calcUserSelect.doorParams.amount.value;
-        // Система
-        if(calcUserSelect.doorParams.system.text == "Подвесная"){
-            calcItog.totalPrice += 8250 * calcUserSelect.doorParams.amount.value;
-        }
+
         // Профиль
         calcItog.totalPrice += Object.values(current_profiles_text).reduce((acc, curr) => acc + curr, 0);
 
@@ -157,8 +160,14 @@ jQuery(document).ready(function ($) {
             let current_height = 0;
             current_height = (calcUserSelect.openingParams.height - 2600) / 10;
             desyat_cm = Math.ceil(current_height / 10)
-            calcItog.totalPrice += calcItog.totalPrice * (0.0 + (0.06 * desyat_cm))
+            calcItog.totalPrice += calcItog.totalPrice * (0.0 + (0.05 * desyat_cm))
         }
+
+        // Система
+        if(calcUserSelect.doorParams.system.text == "Подвесная"){
+            calcItog.totalPrice += 8250 * calcUserSelect.doorParams.amount.value;
+        }
+        
         renderResult();
     }
 
@@ -190,6 +199,15 @@ ${current_services_text.join("\n")}`;
             $('#calc-otp-system').html($('#calc-otp-system').html() + current_profiles_copy_text);
         }
 
+        // Добавление общих параметров
+        let current_general_copy_text = ", " + Object.keys(current_general_price).join(', ');
+        if(Object.keys(current_general_price).length != 0){       
+            $('#calc-otp-door-general').html(current_general_copy_text);
+        }
+        else{
+            $('#calc-otp-door-general').html('')
+        }
+
         $('#calc-otp-door-model').html(calcUserSelect.doorParams.model.text.toLowerCase());
         $('#calc-otp-door-amount').html(calcUserSelect.doorParams.amount.value);
 
@@ -202,8 +220,8 @@ ${current_services_text.join("\n")}`;
 
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
-Раздвижная система ALUTECH ${calcUserSelect.doorParams.system.text}${(current_profiles_text.length != 0) ? current_profiles_copy_text : ''}\n
-цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()} - ${calcItog.totalPrice} ₽\n
+Раздвижная система ALUTECH ${calcUserSelect.doorParams.system.text}${(Object.keys(current_profiles_text).length != 0) ? current_profiles_copy_text : ''}\n
+цвет профиля ${calcUserSelect.doorParams.color.text.toLowerCase()}, ${calcUserSelect.doorFilling.text.toLowerCase()}${(Object.keys(current_general_price).length != 0) ? current_general_copy_text : ''} - ${calcItog.totalPrice} ₽\n
 💪 Монтаж изделия - ${makeMoney(services_sum_cost)} ₽\n
 🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
 ${services_copy_text}
@@ -880,10 +898,10 @@ ${services_copy_text}
         if (!isNaN(amount)) {
             var sum = parseInt(amount) * 3300;
             if (isChecked) {
-                current_services_price['Дополнительный трек'] = sum;
+                current_general_price['Дополнительный трек'] = sum;
             }
             else {
-                delete current_services_price['Дополнительный трек'];
+                delete current_general_price['Дополнительный трек'];
             }
         }
         calc();
@@ -921,7 +939,6 @@ ${services_copy_text}
         }
         calc();
         services_end();
-        console.log(current_services_price)
     });
 
     $('#tonki-profil').on('change', function () {
