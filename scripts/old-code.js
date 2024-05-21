@@ -496,6 +496,7 @@ ${services_copy_text}
         $('#tonki-profil').trigger('change');
         $('#tonki-profil1').trigger('change');
         $('#razgruzka-checkbox').trigger('change');
+        $('#etagi-lift').trigger('input')
     });
     $('#calc-door-amount-inp').on('input', function () {
         $('#podvesnaya-peregorodka').trigger('change');
