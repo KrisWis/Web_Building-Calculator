@@ -174,12 +174,6 @@ jQuery(document).ready(function ($) {
         if(calcUserSelect.doorParams.system.text == "Подвесная"){
             calcItog.totalPrice += 8250 * calcUserSelect.doorParams.amount.value;
         }
-
-        // Доставка
-        calcItog.totalPrice += Object.values(current_dostavka_price).reduce((acc, curr) => acc + curr, 0);
-
-        // Разгруз
-        calcItog.totalPrice += Object.values(current_razgruz_price).reduce((acc, curr) => acc + curr, 0);
         
         renderResult();
     }
@@ -191,8 +185,10 @@ jQuery(document).ready(function ($) {
             Услуги: <br/>
             ${current_services_text.join('<br/>')}
             `);
-            services_copy_text = `Услуги:\n
-${current_services_text.join("\n")}`;
+            services_copy_text = "Услуги:\n";
+            $.each(current_services_text, function(i, service){
+                services_copy_text += service + "\n"
+            })
         }
         else {
             $('#itog_results').html('');
@@ -231,7 +227,7 @@ ${current_services_text.join("\n")}`;
         $('#calc-otp-door-price').html(makeMoney(roundNumber(calcItog.doorPrice, 0)))
         $('#calc-otp-preditog').html(makeMoney(calcItog.totalPrice));
 
-        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost));
+        $('#calc-otp-itog').html(makeMoney(calcItog.totalPrice + services_sum_cost + Object.values(current_dostavka_price).reduce((acc, curr) => acc + curr, 0) +Object.values(current_razgruz_price).reduce((acc, curr) => acc + curr, 0)));
 
         $('#calc-copy-textarea').val(`
 Стоимость перегородки по вашим параметрам (высота - ${calcUserSelect.openingParams.height} мм, ширина - ${calcUserSelect.openingParams.width} мм, ${calcUserSelect.doorParams.model.text.toLowerCase()}, количество дверей - ${calcUserSelect.doorParams.amount.value}): \n
@@ -240,7 +236,7 @@ ${current_services_text.join("\n")}`;
 🛠 Монтаж изделия - ${makeMoney(services_sum_cost)} ₽\n
 🚛 Доставка - ${Object.values(current_dostavka_price).reduce((acc, curr) => acc + curr, 0)} ₽ \n
 💪 Разгрузка - ${Object.values(current_razgruz_price).reduce((acc, curr) => acc + curr, 0)} ₽ \n
-🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost)} ₽\n
+🔑 Итого под ключ - ${makeMoney(calcItog.totalPrice + services_sum_cost + Object.values(current_dostavka_price).reduce((acc, curr) => acc + curr, 0) +Object.values(current_razgruz_price).reduce((acc, curr) => acc + curr, 0))} ₽\n
 ${services_copy_text}
 `) 
     }
@@ -733,7 +729,6 @@ ${services_copy_text}
     });
 
     $('#podvesnaya-peregorodka').change(function () {
-        alert('asd')
         var isChecked = $('#podvesnaya-peregorodka').is(':checked');
         var system = $('#calc-model-door-system').val();
         if (calcItog.totalPrice < 4000) {
@@ -996,6 +991,7 @@ ${services_copy_text}
             }
         }
         calc();
+        services_end();
     });
     
     $('#tonki-profil1').on('change', function () {
@@ -1010,6 +1006,7 @@ ${services_copy_text}
             }
         }
         calc();
+        services_end();
     });
 
 });
