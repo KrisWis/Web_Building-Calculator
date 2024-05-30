@@ -545,6 +545,7 @@ ${services_copy_text}
             calc();
             services_end();
         }
+        $('#zakladnaya').trigger('change');
     });
 
     
@@ -874,7 +875,14 @@ ${services_copy_text}
 
     $('#zakladnaya').change(function () {
         var isChecked = $(this).is(':checked');
-        var sum = 1950 * (calcUserSelect.openingParams.width / 1000);
+        if(calcUserSelect.openingParams.width / 1000 < 2.5){
+            sum = 8250
+            console.log(calcUserSelect.openingParams.width / 1000)
+        }
+        else{
+            sum = door_models[calcUserSelect.doorParams.model.text]['по высоте'] * calcUserSelect.doorParams.amount.value * 1950 * calcUserSelect.openingParams.height / 1000;
+            sum += door_models[calcUserSelect.doorParams.model.text]['по ширине'] * calcUserSelect.doorParams.amount.value * 1950 * ((calcUserSelect.openingParams.width / calcUserSelect.doorParams.amount.value + 15)) / 1000;
+        }
         if (isChecked) {
             current_services_price['Закладная'] = sum;
         }
